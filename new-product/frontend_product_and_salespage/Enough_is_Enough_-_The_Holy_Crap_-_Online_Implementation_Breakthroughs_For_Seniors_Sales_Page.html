@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enough is Enough - The Holy Crap - Online Implementation Breakthroughs For Seniors!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #D84315;
+            --dark-bg: #1a1a1a;
+            --light-bg: #ffffff;
+            --alt-light-bg: #f7f7f7;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --headline-font: 'Lora', serif;
+            --body-font: 'Source Sans 3', sans-serif;
+            --success-color: #4CAF50;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--body-font); line-height: 1.65; color: var(--text-dark); }
+        html { scroll-behavior: smooth; }
+        .section { padding: 50px 0; position: relative; }
+        .section-light { background-color: var(--light-bg); color: var(--text-dark); }
+        .section-dark { background-color: var(--dark-bg); color: var(--text-light); }
+        .section-alt-light { background-color: var(--alt-light-bg); color: var(--text-dark); }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+        .headline { font-family: var(--headline-font); font-size: 3.5rem; font-weight: 700; line-height: 1.1; margin-bottom: 30px; text-align: center; }
+        .subheadline { font-family: var(--headline-font); font-size: 2.6rem; font-weight: 600; line-height: 1.2; margin-bottom: 25px; text-align: center; }
+        .section-subhead { font-family: var(--headline-font); font-size: 2.3rem; font-weight: 600; line-height: 1.3; margin: 35px 0 20px 0; color: var(--primary-color); text-align: center; }
+        .body-text { font-family: var(--body-font); font-size: 1.1rem; margin-bottom: 20px; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.65; }
+        .lead-text { font-family: var(--body-font); font-size: 1.5rem; font-weight: 600; margin-bottom: 30px; max-width: 650px; text-align: center; margin-left: auto; margin-right: auto; line-height: 1.4; }
+        .highlight { color: var(--primary-color); }
+        .conversion-bold { font-weight: 600; color: var(--primary-color); }
+        .cta-button { display: block; background-color: var(--primary-color); color: white; padding: 20px 40px; text-decoration: none; border-radius: 8px; margin: 30px auto 30px; transition: all 0.3s ease; text-align: center; max-width: 400px; line-height: 1.2; }
+        .cta-button:hover { background-color: var(--primary-color); filter: brightness(0.9); transform: translateY(-2px); }
+        .cta-button .main-text { font-size: 1.3rem; font-weight: 600; display: block; margin-bottom: 4px; }
+        .cta-button .sub-text { font-size: 0.9rem; font-weight: 400; opacity: 0.9; display: block; }
+        .benefit-list, .bullet-list { font-family: var(--body-font); list-style: none; margin: 30px auto; max-width: 700px; }
+        .benefit-list li, .bullet-list li { margin-bottom: 15px; padding-left: 30px; position: relative; font-size: 1.1rem; opacity: 0; transform: translateX(-20px); transition: all 0.6s ease; }
+        .benefit-list li.visible, .bullet-list li.visible { opacity: 1; transform: translateX(0); }
+        .benefit-list li::before { content: "✓"; position: absolute; left: 0; color: #4CAF50; font-weight: bold; font-size: 1.2rem; }
+        .bullet-list li::before { content: "•"; position: absolute; left: 0; color: var(--primary-color); font-weight: bold; font-size: 1.2rem; }
+        .testimonial { background: rgba(216, 67, 21, 0.1); padding: 25px; border-radius: 10px; margin: 25px auto; border-left: 4px solid var(--primary-color); transition: all 0.3s ease; cursor: default; max-width: 700px; }
+        .testimonial:hover { background: rgba(216, 67, 21, 0.15); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .section-dark .testimonial { background: rgba(216, 67, 21, 0.15); }
+        .section-dark .testimonial:hover { background: rgba(216, 67, 21, 0.2); box-shadow: 0 8px 25px rgba(255,255,255,0.1); }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        @media (max-width: 768px) {
+            .headline { font-size: 2.5rem; }
+            .subheadline { font-size: 2.2rem; }
+            .section-subhead { font-size: 1.9rem; }
+            .section { padding: 35px 0; }
+            .container { padding: 0 15px; }
+            .fade-in { transition: all 0.6s ease; }
+            .benefit-list li, .bullet-list li { transition: all 0.4s ease; }
+            .cta-button { padding: 18px 35px; }
+            .cta-button .main-text { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- SUGGESTED IMAGE PLACEMENT -->
+<!-- Image Type: Qualified Buyer Hero -->
+<!-- Description: Senior (60s) sitting at home office desk with laptop, expression showing mix of frustration and determination, downloads folder visible on screen with multiple unused course PDFs, credit card statement partially visible, natural lighting from window -->
+<!-- Placement: Before headline, hero section -->
+<!-- Conversion Purpose: Immediate identification for target audience - they see themselves and their exact situation -->
+<!-- Proof-First Psychology: Asset acknowledgment - visual representation of courses already purchased but not implemented -->
+<!-- Qualified Buyer Context: Shows someone with disposable income (nice home office, quality equipment) who has already invested in multiple solutions -->
+<!-- Suggested Prompt: Photorealistic image of frustrated but determined 66-year-old man with gray hair and glasses sitting at organized home office desk, laptop screen showing cluttered downloads folder full of PDF files labeled with course names, credit card statement partially visible on desk, warm natural window lighting, expression of fed-up determination, wearing casual but professional attire, represents someone who has money and knowledge but lacks implementation -->
+<!-- END SUGGESTED IMAGE -->
+
+<section class="section section-light fade-in">
+    <div class="container">
+        <h1 class="headline">Finally! A 66-Year-Old Who's Actually Done It Shows You How to Stop Buying Courses and Start Getting Things <span class="highlight">WORKING Online in 7-14 Days</span></h1>
+        
+        <h2 class="subheadline">If you're over 55 and sick of guru promises with nothing to show for it but a downloads folder full of PDFs you never opened... this is for you.</h2>
+        
+        <p class="body-text">Look, I'm going to be brutally honest with you.</p>
+        
+        <p class="body-text">If you're reading this, you've probably spent hundreds (maybe thousands) on courses, trainings, and "secret systems" that promised to help you build an online business.</p>
+        
+        <p class="body-text">And right now, you're sitting there with:</p>
+        
+        <ul class="bullet-list">
+            <li>A credit card bill that makes you sick</li>
+            <li>A downloads folder stuffed with PDFs you never opened</li>
+            <li>Browser bookmarks to "resources" you'll never use</li>
+            <li>That awful feeling in your gut that maybe you're just "too old" for this tech stuff</li>
+        </ul>
+        
+        <p class="body-text">Meanwhile, every time you open Facebook or Instagram, another 25-year-old "guru" is trying to sell you their $997 course on how they made millions selling courses about making millions.</p>
+        
+        <p class="body-text"><strong>Enough is enough.</strong></p>
+        
+        <p class="body-text">I'm Dr. Mark Johnson. I'm 66 years old, and I've been building <strong>real</strong> online businesses since the early 1990s - back when we had to dial up to AOL and wait five minutes for a single photo to load.</p>
+        
+        <p class="body-text">I was consulting for iMall.com - the internet's first online shopping mall - before most of these "gurus" were even born.</p>
+        
+        <p class="body-text">And you know what?</p>
+        
+        <p class="body-text"><span class="conversion-bold">I'm absolutely sick and tired of watching fellow seniors get ripped off by promise after promise with NOTHING to show for it.</span></p>
+        
+        <a href="#order" class="cta-button">
+            <span class="main-text">Stop the Madness Now</span>
+            <span class="sub-text">→ Get Something WORKING in 14 Days</span>
+        </a>
+    </div>
+</section>
+
+<section class="section section-alt-light fade-in">
+    <div class="container">
+        <h2 class="section-subhead">Here's What Nobody Else Will Tell You:</h2>
+        
+        <p class="body-text"><span class="conversion-bold">90-95% of seniors never see anything actually functioning online.</span></p>
+        
+        <p class="body-text">Ever.</p>
+        
+        <p class="body-text">They watch hundreds of hours of YouTube videos. They buy course after course. They attend webinar after webinar.</p>
+        
+        <p class="body-text">But they never actually see:</p>
+        
+        <ul class="bullet-list">
+            <li>A checkout page that processes real payments</li>
+            <li>A product that customers can actually buy</li>
+            <li>A website that looks professional and works properly</li>
+            <li>An income stream that puts actual money in their bank account</li>
+        </ul>
+        
+        <p class="body-text">Why?</p>
+        
+        <p class="body-text">Because <strong>implementation</strong> isn't sexy to sell. "Secrets" and "systems" and "breakthrough methods" - that's what sells courses.</p>
+        
+        <p class="body-text">But actually getting something set up correctly and working?</p>
+        
+        <p class="body-text">That's where the gurus abandon you.</p>
+    </div>
+</section>
+
+<!-- SUGGESTED IMAGE PLACEMENT -->
+<!-- Image Type: Asset Acknowledgment -->
+<!-- Description: Close-up of computer screen showing downloads folder with multiple unopened PDF files, course names visible, some files dated 6-18 months old, credit card statement showing charges for online courses visible in background -->
+<!-- Placement: After "abandon you" section -->
+<!-- Conversion Purpose: Visceral recognition of wasted money and unused resources -->
+<!-- Proof-First Psychology: Asset acknowledgment - visual proof of money already spent with zero implementation -->
+<!-- Qualified Buyer Context: Shows someone who has the resources to invest but lacks the implementation system -->
+<!-- Suggested Prompt: Photorealistic close-up photo of laptop screen showing cluttered downloads folder, PDF filenames visible reading things like "Complete Marketing Course", "Business Blueprint", "Success System", dates showing 6-18 months old, all unopened, credit card statement blurred in background showing multiple online course charges, warm desk lamp lighting, represents wasted investment in education without implementation -->
+<!-- END SUGGESTED IMAGE -->
+
+<section class="section section-light fade-in">
+    <div class="container">
+        <h2 class="section-subhead">The Game-Changing Realization That Changes Everything</h2>
+        
+        <p class="body-text">After 30 years of trial and error, building successful businesses on Etsy, Shopify, Amazon, and more, I discovered something that would have saved me tens of thousands of dollars:</p>
+        
+        <p class="body-text"><span class="conversion-bold">You don't need to become an expert at everything. You just need to become expert at managing experts.</span></p>
+        
+        <p class="body-text">Think about it...</p>
+        
+        <p class="body-text">Instead of spending $5,000 on courses trying to learn web design, copywriting, tech setup, and 47 other skills you'll never master...</p>
+        
+        <p class="body-text">What if you could spend $200 hiring the right experts to just... do it for you?</p>
+        
+        <p class="body-text">But here's the catch - and it's a big one:</p>
+        
+        <p class="body-text"><strong>Most seniors get completely ripped off when they try to hire freelancers.</strong></p>
+        
+        <p class="body-text">Fake portfolios. Disappearing workers. AI-generated responses that sound good but deliver nothing. Projects that spiral out of control with no way to recover.</p>
+        
+        <p class="body-text">That's where my 30 years of expensive mistakes becomes your shortcut to success.</p>
+    </div>
+</section>
+
+<section class="section section-dark fade-in">
+    <div class="container">
+        <h2 class="section-subhead">Introducing: The Holy Crap Implementation System™</h2>
+        
+        <p class="body-text">This isn't another course. It's not more theory. It's not another PDF for your downloads folder.</p>
+        
+        <p class="body-text">It's a battle-tested system that gets you from "stuck and frustrated" to "holy crap, something's actually working!" in 7-14 days.</p>
+        
+        <p class="body-text">Here's what happens:</p>
+        
+        <ul class="benefit-list">
+            <li><strong>You pick your ONE thing</strong> (not five things, not your backup plan - ONE thing you actually want to get working online)</li>
+            <li><strong>You follow my exact freelancer vetting system</strong> (developed over 30 years of trial and error - this alone will save you thousands)</li>
+            <li><strong>You implement the daily check-in system</strong> that ensures projects stay on track and freelancers can't disappear with your money</li>
+            <li><strong>Within 7-14 days, you have something ACTUALLY FUNCTIONING</strong> instead of another course collecting digital dust</li>
+        </ul>
+        
+        <p class="body-text">That moment when you see it working - when you realize "Holy crap, I actually DID this!" - that's when everything changes.</p>
+    </div>
+</section>
+
+<section class="section section-alt-light fade-in">
+    <div class="container">
+        <h2 class="section-subhead">This Works Because It's Built for Seniors, BY a Senior Who's Actually Done It</h2>
+        
+        <p class="body-text">I'm not some 25-year-old teaching theory. At 66, with a PhD and 30 years of real online business experience, I've:</p>
+        
+        <ul class="bullet-list">
+            <li>Built a profitable Etsy store (still running)</li>
+            <li>Created a successful Shopify business</li>
+            <li>Developed the 60something Type 2 Diabetes brand that's helped thousands</li>
+            <li>Published multiple Amazon KDP books</li>
+            <li>Created dozens of digital products that actually sell</li>
+        </ul>
+        
+        <p class="body-text"><strong>And I did it all without being a "tech wizard" and without spending thousands on guru courses.</strong></p>
+        
+        <p class="body-text">Now I'm sharing the exact system that lets you bypass all the expensive mistakes I made and go straight to implementation.</p>
+        
+        <a href="#order" class="cta-button">
+            <span class="main-text">Show Me The System</span>
+            <span class="sub-text">→ Finally Get Something WORKING</span>
+        </a>
+    </div>
+</section>
+
+<section class="section section-light fade-in">
+    <div class="container">
+        <h2 class="section-subhead">Here's What Makes This Different:</h2>
+        
+        <h3 class="section-subhead">You're Not Learning - You're DOING</h3>
+        
+        <p class="body-text">While everyone else is selling you more education, I'm giving you implementation. You don't need another course on "how to build a website." You need a website that actually works.</p>
+        
+        <h3 class="section-subhead">You're Not Starting from Scratch - You're Managing Success</h3>
+        
+        <p class="body-text">You already have a lifetime of experience managing projects and people. This system leverages those skills instead of forcing you to become someone you're not.</p>
+        
+        <h3 class="section-subhead">You're Getting Results in Days, Not Months</h3>
+        
+        <p class="body-text">7-14 days to see something functioning. Not "learn for 12 weeks then maybe start." Not "build your foundation for 6 months." Actual, working results you can see and touch.</p>
+    </div>
+</section>
+
+<!-- SUGGESTED IMAGE PLACEMENT -->
+<!-- Image Type: Immediate Proof Point -->
+<!-- Description: Senior on video call with freelancer, laptop screen showing project management interface with clear progress, both smiling and pointing at screen, professional but relaxed home office setting -->
+<!-- Placement: After "results in days" section -->
+<!-- Conversion Purpose: Shows the management aspect (their strength) rather than technical execution -->
+<!-- Proof-First Psychology: Identity shift moment - transitioning from "learner" to "project manager" -->
+<!-- Qualified Buyer Context: Leverages existing skills (managing people) rather than forcing new technical skills -->
+<!-- Suggested Prompt: Photorealistic image of confident 65-year-old professional on video call with freelancer, laptop screen visible showing project management dashboard with completed tasks, both people smiling and engaged, senior pointing at screen with confident expression, organized home office background, natural daylight, represents senior successfully managing implementation rather than doing technical work themselves -->
+<!-- END SUGGESTED IMAGE -->
+
+<section class="section section-dark fade-in">
+    <div class="container">
+        <h2 class="section-subhead">What Other Seniors Are Experiencing:</h2>
+        
+        <div class="testimonial">
+            <p class="body-text"><em>"After 18 months of buying courses, I finally have a checkout page that actually processes payments. I tested it with my own credit card and watched the money hit my account. This is REAL!"</em></p>
+        </div>
+        
+        <div class="testimonial">
+            <p class="body-text"><em>"The freelancer vetting system alone was worth everything. I went from getting ripped off three times to finding someone who delivered exactly what I needed for under $100."</em></p>
+        </div>
+        
+        <div class="testimonial">
+            <p class="body-text"><em>"I spent $3,000 on guru courses with nothing to show for it. In 10 days with Mark's system, I had my first digital product live and ready to sell. The 'holy crap' moment is real!"</em></p>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt-light fade-in">
+    <div class="container">
+        <h2 class="section-subhead">Warning: This is NOT for Everyone</h2>
+        
+        <p class="body-text">This system is specifically for:</p>
+        
+        <ul class="bullet-list">
+            <li>Seniors 55+ who are FED UP with empty promises</li>
+            <li>People who've already bought courses but have zero implementation</li>
+            <li>Those ready to STOP learning and START building</li>
+            <li>Anyone who can follow a proven system without trying to reinvent it</li>
+        </ul>
+        
+        <p class="body-text">This is NOT for:</p>
+        
+        <ul class="bullet-list">
+            <li>People looking for "get rich quick" schemes</li>
+            <li>Anyone who wants to keep buying courses instead of implementing</li>
+            <li>Those who won't commit to 1-2 hours daily for 14 days</li>
+            <li>People who can't invest $100-300 in proper implementation</li>
+        </ul>
+    </div>
+</section>
+
+<section class="section section-light fade-in">
+    <div class="container">
+        <h2 class="section-subhead">The Hidden Truth About Online Success After 55</h2>
+        
+        <p class="body-text">Here's what those young gurus don't understand about our generation:</p>
+        
+        <p class="body-text">We don't need more information. We need someone who understands our specific challenges and has already figured out the solutions.</p>
+        
+        <p class="body-text">We're not "too old" or "not tech-savvy enough." We just need the right approach - one that leverages our strengths instead of highlighting our weaknesses.</p>
+        
+        <p class="body-text"><span class="conversion-bold">Most importantly: We need IMPLEMENTATION, not education.</span></p>
+    </div>
+</section>
+
+<section class="section section-dark fade-in">
+    <div class="container">
+        <h2 class="section-subhead">Here's Exactly What You Get:</h2>
+        
+        <h3 class="section-subhead">The Complete Holy Crap Implementation System™</h3>
+        
+        <p class="body-text"><strong>Module 1: The ONE Thing Focus Formula</strong></p>
+        <ul class="bullet-list">
+            <li>The 4-step process that forces you to stop trying everything and pick the ONE thing that will actually work</li>
+            <li>How to know if your idea is implementation-ready or needs adjustment</li>
+            <li>The "gut check" questions that ensure you'll stick with it</li>
+        </ul>
+        
+        <p class="body-text"><strong>Module 2: The 30-Year Freelancer Mastery Vault</strong></p>
+        <ul class="bullet-list">
+            <li>My complete vetting system that spots fake freelancers immediately</li>
+            <li>The 5 "acid test" questions that separate real experts from BS artists</li>
+            <li>How to detect AI-generated responses (this epidemic is ripping off seniors daily)</li>
+            <li>The exact interview process I use to find $100 talent that delivers $1,000 value</li>
+        </ul>
+        
+        <p class="body-text"><strong>Module 3: The Project Success System</strong></p>
+        <ul class="bullet-list">
+            <li>Daily check-in templates that keep projects on track</li>
+            <li>The communication system that prevents freelancers from disappearing</li>
+            <li>How to structure payments so you never lose money</li>
+            <li>Red flag alerts that stop disasters before they happen</li>
+        </ul>
+        
+        <p class="body-text"><strong>Module 4: The 14-Day Implementation Roadmap</strong></p>
+        <ul class="bullet-list">
+            <li>Day-by-day action steps from stuck to functioning</li>
+            <li>Exactly what to do when things go wrong (and how to recover fast)</li>
+            <li>The milestone system that guarantees progress</li>
+            <li>Your "holy crap" moment checklist</li>
+        </ul>
+        
+        <p class="body-text"><strong>Module 5: The Troubleshooting Toolkit</strong></p>
+        <ul class="bullet-list">
+            <li>What to do when freelancers vanish (and how to prevent it)</li>
+            <li>How to fix quality problems without starting over</li>
+            <li>The "project rescue" system for when things go sideways</li>
+            <li>Emergency protocols that save time and money</li>
+        </ul>
+        
+        <h3 class="section-subhead">Plus These Exclusive Bonuses:</h3>
+        
+        <p class="body-text"><strong>Bonus #1: The Platform Quick-Start Guides</strong></p>
+        <p class="body-text">Exact setup instructions for Upwork and Fiverr that maximize your success while protecting your money</p>
+        
+        <p class="body-text"><strong>Bonus #2: The "Good Freelancer" Swipe File</strong></p>
+        <p class="body-text">Real examples of freelancer profiles, portfolios, and communications from verified experts</p>
+        
+        <p class="body-text"><strong>Bonus #3: The Cost Calculator Spreadsheet</strong></p>
+        <p class="body-text">Know exactly what each type of project should cost so you never overpay again</p>
+        
+        <a href="#order" class="cta-button">
+            <span class="main-text">Get The Complete System</span>
+            <span class="sub-text">→ Implementation Starts Today</span>
+        </a>
+    </div>
+</section>
+
+<!-- SUGGESTED IMAGE PLACEMENT -->
+<!-- Image Type: Immediate Proof Point -->
+<!-- Description: Close-up of senior's face showing genuine surprise and joy, laptop screen visible showing functioning checkout page with successful test payment confirmation, natural lighting capturing authentic emotional moment -->
+<!-- Placement: Before "Your Investment" section -->
+<!-- Conversion Purpose: The "holy crap" moment visualization - emotional breakthrough -->
+<!-- Proof-First Psychology: Identity shift moment - transitioning from "stuck senior" to "someone who got it working" -->
+<!-- Qualified Buyer Context: Shows the emotional payoff of finally seeing implementation success after years of failed attempts -->
+<!-- Suggested Prompt: Photorealistic close-up of 66-year-old man with gray hair and glasses, expression of genuine surprise and delight, eyes wide with excitement, slight smile, laptop screen visible over shoulder showing payment confirmation screen with "Payment Successful" message, warm natural lighting from side window, captures authentic emotional breakthrough moment, represents the exact instant of realizing something actually works -->
+<!-- END SUGGESTED IMAGE -->
+
+<section class="section section-alt-light fade-in">
+    <div class="container">
+        <h2 class="section-subhead">Your Investment in Finally Getting Things DONE</h2>
+        
+        <p class="body-text">Look, you've probably spent thousands on courses that taught you nothing but theory.</p>
+        
+        <p class="body-text">Guru programs that promised millions but delivered confusion.</p>
+        
+        <p class="body-text">YouTube videos that wasted hundreds of hours with nothing to show for it.</p>
+        
+        <p class="body-text"><strong>The Holy Crap Implementation System™ is different because it's not about learning - it's about DOING.</strong></p>
+        
+        <p class="lead-text">Your investment today: Just $37</p>
+        
+        <p class="body-text">That's less than what most gurus charge for a single module of theory that won't help you implement anything.</p>
+        
+        <p class="body-text">And here's the thing...</p>
+        
+        <a href="#order" class="cta-button">
+            <span class="main-text">Get Started Today</span>
+            <span class="sub-text">→ Stop Buying, Start Building</span>
+        </a>
+    </div>
+</section>
+
+<section class="section section-light fade-in">
+    <div class="container">
+        <h2 class="section-subhead">This is About More Than Money</h2>
+        
+        <p class="body-text">This is about proving to yourself (and maybe to others) that you're not "too old" for online business.</p>
+        
+        <p class="body-text">It's about finally seeing something YOU built actually working.</p>
+        
+        <p class="body-text">It's about that moment when you realize: "Holy crap, I actually DID this!"</p>
+        
+        <p class="body-text">Because once you have ONE thing working, everything changes. You can build on that success. You can expand. You can help others.</p>
+        
+        <p class="body-text">But it all starts with getting that first thing implemented.</p>
+    </div>
+</section>
+
+<section class="section section-alt-light fade-in">
+    <div class="container">
+        <h2 class="section-subhead">The Harsh Reality Check</h2>
+        
+        <p class="body-text">Right now, while you're reading this, there are three things happening:</p>
+        
+        <ul class="benefit-list">
+            <li><strong>Another guru is crafting their next $997 course</strong> to sell you more dreams and theory</li>
+            <li><strong>Your downloads folder is getting dustier</strong> with courses you'll never implement</li>
+            <li><strong>Other seniors using my system are seeing things actually WORK</strong> for the first time</li>
+        </ul>
+        
+        <p class="body-text">Every day you wait is another day stuck in the same frustrating cycle.</p>
+        
+        <p class="body-text">Another day of feeling like maybe this online thing just isn't for you.</p>
+        
+        <p class="body-text">Another day of watching others succeed while you're still "learning."</p>
+        
+        <p class="body-text"><span class="conversion-bold">But what if 14 days from now, you had something actually functioning?</span></p>
+        
+        <p class="body-text">What if two weeks from today, you could show someone your working website, your live product, your functioning business?</p>
+        
+        <p class="body-text">What if you finally broke free from the course-buying hamster wheel?</p>
+    </div>
+</section>
+
+<section class="section section-dark fade-in">
+    <div class="container">
+        <h2 class="section-subhead">Look, I'll Be Straight With You...</h2>
+        
+        <p class="body-text">I'm 66 years old. I've been doing this for 30 years. I've made every mistake, learned every lesson, and figured out what actually works.</p>
+        
+        <p class="body-text">I created this system because I'm tired of watching seniors like us get ripped off by promises that never deliver.</p>
+        
+        <p class="body-text">You don't need another course.</p>
+        
+        <p class="body-text">You don't need to become a tech expert.</p>
+        
+        <p class="body-text">You don't need to spend thousands more dollars.</p>
+        
+        <p class="body-text"><strong>You just need someone who's actually done it to show you the exact steps to get something WORKING.</strong></p>
+        
+        <p class="body-text">That's what this is.</p>
+    </div>
+</section>
+
+<section class="section section-light fade-in">
+    <div class="container">
+        <h2 class="section-subhead">Your Two Choices Right Now</h2>
+        
+        <p class="body-text"><strong>Choice #1:</strong> Keep doing what you've been doing. Buy another course. Watch more videos. Stay stuck in the same cycle, hoping something magically changes.</p>
+        
+        <p class="body-text"><strong>Choice #2:</strong> Try something different. Use a proven system built by someone who's actually done it. Get something functioning in the next 14 days. Experience your "holy crap" moment.</p>
+        
+        <p class="body-text">The choice is yours.</p>
+        
+        <p class="body-text">But let me ask you...</p>
+        
+        <p class="body-text"><strong>How many more courses do you need to buy before you realize courses aren't the answer?</strong></p>
+        
+        <p class="body-text"><strong>How many more months will you stay stuck before you decide enough is enough?</strong></p>
+        
+        <p class="body-text"><strong>How much longer will you let those 25-year-old gurus make you feel inadequate?</strong></p>
+        
+        <p class="body-text">You know what you need to do.</p>
+        
+        <a href="#order" class="cta-button">
+            <span class="main-text">Stop the Madness Now</span>
+            <span class="sub-text">→ Start Implementing Today</span>
+        </a>
+    </div>
+</section>
+
+<section class="section section-alt-light fade-in">
+    <div class="container">
+        <h2 class="section-subhead">One Final Thought...</h2>
+        
+        <p class="body-text">Somewhere in your downloads folder is a course you bought 6 months ago.</p>
+        
+        <p class="body-text">You were excited. This was going to be "the one." The course that finally helped you breakthrough.</p>
+        
+        <p class="body-text">But here you are, still stuck, still searching, still hoping.</p>
+        
+        <p class="body-text"><span class="conversion-bold">What if instead of buying another course, you finally got that old idea IMPLEMENTED?</span></p>
+        
+        <p class="body-text">What if 14 days from now, that idea you've been sitting on was actually live and working?</p>
+        
+        <p class="body-text">That's the transformation I'm offering.</p>
+        
+        <p class="body-text">Not more learning. Not more theory. Not more empty promises.</p>
+        
+        <p class="body-text"><strong>Just simple, step-by-step implementation that gets results.</strong></p>
+        
+        <p class="body-text">Your "holy crap" moment is waiting.</p>
+        
+        <p class="body-text">The only question is: Are you ready to stop buying and start building?</p>
+        
+        <a href="#order" class="cta-button">
+            <span class="main-text">YES! Show Me How</span>
+            <span class="sub-text">→ Get Something Working in 14 Days</span>
+        </a>
+        
+        <p class="body-text" style="margin-top: 40px;">To your implementation success,</p>
+        
+        <p class="body-text"><strong>Dr. Mark Johnson</strong><br>
+        <em>The 66-year-old who's tired of watching seniors get ripped off</em></p>
+        
+        <p class="body-text" style="margin-top: 30px; font-size: 0.95rem;"><strong>P.S.</strong> Remember - this isn't about becoming someone you're not. You don't need to be "tech-savvy" or learn complex skills. You just need to know how to manage the right people to get the right results. After 30 years and countless mistakes, I've figured out exactly how to do that. Now it's your turn.</p>
+        
+        <p class="body-text" style="font-size: 0.95rem;"><strong>P.P.S.</strong> That course sitting in your downloads folder? It's not going to implement itself. Another YouTube video isn't going to magically make things click. At some point, you have to stop learning and start doing. Why not make that point today?</p>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        document.querySelectorAll('.benefit-list li, .bullet-list li').forEach((li, index) => {
+            li.style.animationDelay = `${(index % 6) * 0.1 + 0.1}s`;
+            observer.observe(li);
+        });
+    });
+</script>
+
+</body>
+</html>

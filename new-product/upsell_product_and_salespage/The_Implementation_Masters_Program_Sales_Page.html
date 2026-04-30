@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Implementation Masters Program™ - Build Your Complete Freelancer Team</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary-color: #D84315;
+            --dark-bg: #1a1a1a;
+            --light-bg: #ffffff;
+            --alt-light-bg: #f7f7f7;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --headline-font: 'Lora', serif;
+            --body-font: 'Source Sans 3', sans-serif;
+            --success-color: #4CAF50;
+        }
+
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--body-font);
+            line-height: 1.65;
+            color: var(--text-dark);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Section styles */
+        .section {
+            padding: 50px 0;
+            position: relative;
+        }
+
+        .section-light {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+        }
+
+        .section-dark {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+        }
+
+        .section-alt-light {
+            background-color: var(--alt-light-bg);
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Typography */
+        .headline {
+            font-family: var(--headline-font);
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .subheadline {
+            font-family: var(--headline-font);
+            font-size: 2.6rem;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .section-subhead {
+            font-family: var(--headline-font);
+            font-size: 2.3rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin: 35px 0 20px 0;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .body-text {
+            font-family: var(--body-font);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.65;
+        }
+
+        .lead-text {
+            font-family: var(--body-font);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            max-width: 650px;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.4;
+        }
+
+        .highlight {
+            color: var(--primary-color);
+        }
+
+        .conversion-bold {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* CTA Button Styles */
+        .cta-button {
+            display: block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 40px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 30px auto 30px;
+            transition: all 0.3s ease;
+            text-align: center;
+            max-width: 400px;
+            line-height: 1.2;
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-color);
+            filter: brightness(0.9);
+            transform: translateY(-2px);
+        }
+
+        .cta-button .main-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .cta-button .sub-text {
+            font-size: 0.9rem;
+            font-weight: 400;
+            opacity: 0.9;
+            display: block;
+        }
+
+        /* Lists */
+        .benefit-list, .bullet-list {
+            font-family: var(--body-font);
+            list-style: none;
+            margin: 30px auto;
+            max-width: 700px;
+        }
+
+        .benefit-list li, .bullet-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.1rem;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.6s ease;
+        }
+
+        .benefit-list li.visible, .bullet-list li.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .benefit-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .bullet-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Testimonials */
+        .testimonial {
+            background: rgba(216, 67, 21, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px auto;
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+            cursor: default;
+            max-width: 700px;
+        }
+
+        .testimonial:hover {
+            background: rgba(216, 67, 21, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .section-dark .testimonial {
+            background: rgba(216, 67, 21, 0.15);
+        }
+
+        .section-dark .testimonial:hover {
+            background: rgba(216, 67, 21, 0.2);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.1);
+        }
+
+        /* Fade-in animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive breakpoints */
+        @media (max-width: 768px) {
+            .headline { font-size: 2.5rem; }
+            .subheadline { font-size: 2.2rem; }
+            .section-subhead { font-size: 1.9rem; }
+            .section { padding: 35px 0; }
+            .container { padding: 0 15px; }
+            .fade-in { transition: all 0.6s ease; }
+            .benefit-list li, .bullet-list li { transition: all 0.4s ease; }
+            .cta-button { padding: 18px 35px; }
+            .cta-button .main-text { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SECTION 1: Opening Hook -->
+    <section class="section section-light fade-in">
+        <div class="container">
+            <h1 class="headline">Before You Go: A Quick Note About <span class="highlight">What Happens Next</span></h1>
+            
+            <p class="lead-text"><strong>Congratulations on securing "Enough is Enough - The Holy Crap - Online Implementation Breakthroughs For Seniors!"</strong></p>
+            
+            <!-- SUGGESTED IMAGE PLACEMENT -->
+            <!-- Image Type: Qualified Buyer Hero -->
+            <!-- Description: Senior professional (55+) at organized desk with laptop open, looking satisfied/relieved while reviewing a completed checklist or project dashboard. Not celebrating massive success, but experiencing the "aha moment" of proof - something is actually working. Visible assets: existing business materials, notes from previous courses/attempts, evidence of prior investment. -->
+            <!-- Placement: After lead text, before body paragraphs -->
+            <!-- Conversion Purpose: Immediate identity shift - they're not someone who buys courses, they're someone who implements -->
+            <!-- Proof-First Psychology: Qualified buyer representation - shows someone with purchasing power and existing assets finally getting traction -->
+            <!-- Qualified Buyer Context: Resonates with seniors who have investment history but struggle with execution - validates their "enough is enough" moment -->
+            <!-- Suggested Prompt: Professional photograph of a satisfied senior professional (60s) at their home office desk, natural morning light from window, laptop showing a simple completed project checklist or basic functioning website, stack of unused course materials visible in background, organized workspace showing capability, relieved/satisfied expression (not ecstatic celebration), business casual clothing, evidence of prior investment (books, notes, equipment), photorealistic style, authentic moment of validation -->
+            <!-- END SUGGESTED IMAGE -->
+            
+            <p class="body-text">You just made a decision that 95% of people your age never make. Instead of buying another course that'll collect digital dust, you invested in actually getting something <strong>implemented and working</strong>.</p>
+            
+            <p class="body-text">That takes guts. And it tells me something important about you.</p>
+            
+            <p class="body-text">You're done with the BS. Done with the gurus. Done with learning theory that never turns into anything real.</p>
+            
+            <p class="body-text">You want results. And you're about to get them.</p>
+            
+            <p class="body-text">But before you dive into implementing your ONE thing, I need to share something with you...</p>
+            
+            <a href="#order" class="cta-button">
+                <span class="main-text">Yes! Add The Team System</span>
+                <span class="sub-text">→ Build Complete Implementation Capability</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- SECTION 2: The Success Vision -->
+    <section class="section section-alt-light fade-in">
+        <div class="container">
+            <h2 class="subheadline">Here's What's Going to Happen in the Next <span class="highlight">7-14 Days</span></h2>
+            
+            <p class="body-text">You're going to follow the system. You're going to pick your ONE thing. You're going to use my 30-year vetting process to find a reliable freelancer. You're going to manage that project to completion.</p>
+            
+            <p class="body-text">And then... <strong>holy crap, something's actually working.</strong></p>
+            
+            <p class="body-text">Your checkout page processes payments. Or your website goes live. Or your digital product is ready to sell. Whatever your ONE thing is - it's functioning instead of sitting in your downloads folder.</p>
+            
+            <!-- SUGGESTED IMAGE PLACEMENT -->
+            <!-- Image Type: Immediate Proof Point -->
+            <!-- Description: Close-up of laptop screen showing a simple but functioning project milestone - not massive revenue, but proof of completion. Examples: basic website live indicator, first test transaction success, simple email sequence scheduled, calendar with consistent check marks for the first week. Focus on the immediate measurable win within 7-14 days. -->
+            <!-- Placement: After "holy crap" paragraph -->
+            <!-- Conversion Purpose: Visualizes the specific proof point they'll achieve - reinforces the 7-14 day timeframe -->
+            <!-- Proof-First Psychology: Immediate proof points over final transformations - shows the quick win that builds momentum -->
+            <!-- Qualified Buyer Context: Seniors who've tried before need to see realistic first milestones, not fake overnight success -->
+            <!-- Suggested Prompt: Close-up photograph of laptop screen displaying proof of first implementation success: simple website "live" status indicator, basic checkout page test transaction completed, email automation dashboard showing first sequence scheduled, or project management tool with initial tasks checked off, clean modern interface, natural desk lighting, coffee cup edge visible showing working session, professional but accessible feel, photorealistic style, emphasis on small but real accomplishment -->
+            <!-- END SUGGESTED IMAGE -->
+            
+            <p class="body-text">That feeling? Pure gold. You'll finally prove to yourself that you're not "too old" or "too tech-challenged" for this online thing.</p>
+            
+            <p class="body-text">But here's what I've learned after helping seniors like you for 30 years:</p>
+            
+            <p class="body-text"><span class="conversion-bold">The moment you successfully implement one thing, you're going to want to implement two, three, four more things.</span></p>
+            
+            <p class="body-text">You're going to look at all those other ideas you've been sitting on and think: "Wait, I could actually DO those now."</p>
+            
+            <p class="body-text">And that's when a new question hits you:</p>
+            
+            <p class="body-text"><em>"Do I really have to go through this entire vetting process again... for every single project?"</em></p>
+        </div>
+    </section>
+
+    <!-- SECTION 3: The Problem Intensifies -->
+    <section class="section section-dark fade-in">
+        <div class="container">
+            <h2 class="subheadline">The Exhausting Reality of <span class="highlight">One-Project-at-a-Time</span></h2>
+            
+            <p class="body-text">I'll tell you exactly what happens if you don't address this:</p>
+            
+            <p class="body-text">You'll implement Project #1 successfully. Awesome.</p>
+            
+            <p class="body-text">Then you'll want to tackle Project #2. But that means finding a NEW freelancer, going through the WHOLE vetting process again, managing another stranger through completion...</p>
+            
+            <p class="body-text">Then Project #3. Same thing. Start from scratch.</p>
+            
+            <p class="body-text">Project #4. Repeat.</p>
+            
+            <p class="body-text">Every. Single. Time.</p>
+            
+            <p class="body-text">After about project #3, most people start burning out. The vetting process that worked great once starts feeling exhausting when you're doing it over and over. Projects take forever because you're always starting with strangers who don't know your standards.</p>
+            
+            <p class="body-text">I made this mistake for YEARS before I figured out a better approach.</p>
+            
+            <!-- SUGGESTED IMAGE PLACEMENT -->
+            <!-- Image Type: Asset Acknowledgment / Frustration Visualization -->
+            <!-- Description: Senior at desk surrounded by evidence of multiple incomplete projects - sticky notes with project ideas, open browser tabs for different freelancer platforms, notebook with crossed-out names, visible frustration but not despair. Shows someone with capability hitting the bottleneck of constantly restarting the vetting process. -->
+            <!-- Placement: After "I made this mistake for YEARS" -->
+            <!-- Conversion Purpose: Visualizes the specific pain of the one-at-a-time approach - not inability but inefficiency -->
+            <!-- Proof-First Psychology: Internal conversation visualization - "I can do this, but it's exhausting doing it this way" -->
+            <!-- Qualified Buyer Context: Shows someone who's capable but hitting process limitations, not someone who can't figure it out at all -->
+            <!-- Suggested Prompt: Overhead photograph of busy home office desk, senior professional visible from above, multiple project notes spread out, laptop showing freelancer platform open, notebook with freelancer names and crossed-out entries, sticky notes with different project ideas, coffee cup, evidence of organized person hitting a process bottleneck, natural lighting, slight frustration in posture (hand on forehead), photorealistic style, conveys capable person facing inefficient workflow -->
+            <!-- END SUGGESTED IMAGE -->
+            
+            <p class="body-text">See, I treated every project like a separate adventure. Need a designer? Go find one. Need a writer? Start the search again. Need tech help? Hope you find someone good this time.</p>
+            
+            <p class="body-text"><span class="conversion-bold">It was like shopping for all new ingredients every time I wanted to cook dinner. Exhausting and completely unnecessary.</span></p>
+        </div>
+    </section>
+
+    <!-- SECTION 4: The Solution Story -->
+    <section class="section section-light fade-in">
+        <div class="container">
+            <h2 class="subheadline">What Changed <span class="highlight">Everything</span> for Me</h2>
+            
+            <p class="body-text">The breakthrough came when I stopped treating freelancers as one-off transactions and started <strong>building a reliable team.</strong></p>
+            
+            <p class="body-text">Instead of finding a new designer for every project, I found ONE great designer and kept working with her. Same for writing. Same for tech setup. Same for every specialty I regularly needed.</p>
+            
+            <p class="body-text">Suddenly, I wasn't starting from zero every time.</p>
+            
+            <p class="body-text">When I needed design work, I'd message Sarah. She already knew my style, my standards, and how I like to communicate. Project started within 24 hours instead of 5 days of searching and vetting.</p>
+            
+            <p class="body-text">When I needed content written, I'd reach out to Jennifer. She knew my audience, my voice, and what quality looked like for my brand. No explaining everything from scratch.</p>
+            
+            <p class="body-text">When something technical needed configuring, David already understood my systems. He could jump in immediately without a week of orientation.</p>
+            
+            <p class="body-text"><span class="conversion-bold">That's when implementation stopped being exhausting and started feeling almost automatic.</span></p>
+            
+            <p class="body-text">Not because I got smarter or worked harder. Because I built a team of 3-5 reliable specialists who were ready to tackle whatever I needed.</p>
+        </div>
+    </section>
+
+    <!-- SECTION 5: The Product Introduction -->
+    <section class="section section-alt-light fade-in">
+        <div class="container">
+            <h2 class="subheadline">The Implementation Masters Program™</h2>
+            
+            <p class="body-text">I've taken everything I learned over 30 years of building and managing freelancer teams and put it into a complete system you can implement alongside what you just purchased.</p>
+            
+            <p class="lead-text"><strong>The Implementation Masters Program™ - Your Complete Freelancer Team System</strong></p>
+            
+            <p class="body-text">This extends the exact same approach you're about to use for your first implementation - but applied strategically to build a complete team capability.</p>
+            
+            <p class="body-text">You're not learning something new. You're optimizing what you've already committed to.</p>
+            
+            <p class="body-text">Here's what the program delivers:</p>
+            
+            <ul class="benefit-list">
+                <li><strong>The Freelancer Team Mastery System™</strong> - The complete framework for building a reliable roster of 3-5 specialists who know you, understand your standards, and are ready to implement whatever you need. Reduces project startup time by 80% because you're never starting from scratch again.</li>
+                
+                <li><strong>The Multi-Project Management Framework</strong> - How to manage 2-5 simultaneous projects without chaos using simple tracking that takes 20-30 minutes per day. No fancy software needed - just proven methods that keep everything moving smoothly while you stay in control.</li>
+                
+                <li><strong>The Freelancer Roster System</strong> - The organized approach to maintaining your team's contact info, rates, availability, and strengths. When you need design work, you immediately know your primary and backup designers. Same for every specialty. No more searching through old messages trying to remember how to reach someone.</li>
+                
+                <li><strong>Cost Optimization Through Relationships</strong> - Strategies for getting better rates and priority service from your team members - not through aggressive negotiation, but through the natural advantages of being a valued repeat client. Most people see 20-40% cost reduction over time while quality improves.</li>
+                
+                <li><strong>The Project Prioritization Protocol</strong> - The decision framework for choosing which projects to implement when you have more ideas than time or budget. Stops the shiny object syndrome before it starts and keeps you focused on the right things in the right order.</li>
+                
+                <li><strong>Advanced Vetting for Specialized Skills</strong> - Methods for identifying truly skilled technical specialists versus people who just talk a good game. Prevents expensive mistakes on complex work where you can't evaluate the quality yourself.</li>
+                
+                <li><strong>Complete Troubleshooting Solutions</strong> - Proven approaches for handling every common team challenge - silent freelancers, quality issues, missed deadlines, scope creep. When problems emerge, you'll know exactly how to handle them professionally.</li>
+            </ul>
+            
+            <a href="#order" class="cta-button">
+                <span class="main-text">Add This To My Order Now</span>
+                <span class="sub-text">→ Complete Team System for Just $97</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- SECTION 6: The Transformation -->
+    <section class="section section-dark fade-in">
+        <div class="container">
+            <h2 class="subheadline">What This Means <span class="highlight">for You</span></h2>
+            
+            <p class="body-text">Once you've built your team using this system:</p>
+            
+            <ul class="bullet-list">
+                <li><strong>New project ideas don't mean weeks of searching and vetting.</strong> You message your roster and have specialists working within 24-48 hours.</li>
+                
+                <li><strong>Multiple projects move forward simultaneously</strong> instead of waiting in line behind each other.</li>
+                
+                <li><strong>Costs go down over time</strong> as your team members offer preferred pricing to keep you as a reliable client.</li>
+                
+                <li><strong>Quality improves</strong> because your specialists learn your standards and deliver exactly what you need without constant hand-holding.</li>
+                
+                <li><strong>Implementation becomes almost automatic.</strong> You're not figuring things out each time - you're executing proven processes with proven people.</li>
+            </ul>
+            
+            <!-- SUGGESTED IMAGE PLACEMENT -->
+            <!-- Image Type: Aha Moment / Identity Shift -->
+            <!-- Description: Senior professional looking at organized project dashboard or team roster with expression of realization/relief - the "aha moment" of understanding they can actually scale. Not celebrating completion but experiencing the psychological shift from "I can do one thing" to "I can implement anything". Visible: simple team organization system, multiple projects in progress. -->
+            <!-- Placement: After bullet list, before transformation paragraph -->
+            <!-- Conversion Purpose: Visualizes the identity shift from single-project implementer to capable team leader -->
+            <!-- Proof-First Psychology: Identity shift moment - becoming "someone who can implement multiple things" not just "someone who completed one project" -->
+            <!-- Qualified Buyer Context: Shows the strategic advantage qualified buyers get from building relationships vs. transactional thinking -->
+            <!-- Suggested Prompt: Medium shot photograph of senior professional (60s) at laptop, looking at organized spreadsheet or simple dashboard showing 3-4 active projects with different team members assigned, expression of satisfied realization (not excitement, but confident understanding), sticky notes with team member names visible, natural home office lighting, professional but accessible workspace, evidence of systematic approach (organized notes, clear process), photorealistic style, captures moment of strategic clarity -->
+            <!-- END SUGGESTED IMAGE -->
+            
+            <p class="body-text">You'll go from "I proved I can implement one thing" to "I can implement anything I want, whenever I want."</p>
+            
+            <p class="body-text">That's not hype. That's just what happens when you build a reliable team instead of treating every project like starting from scratch.</p>
+        </div>
+    </section>
+
+    <!-- SECTION 7: Two Paths Decision -->
+    <section class="section section-light fade-in">
+        <div class="container">
+            <h2 class="subheadline">Two Paths <span class="highlight">Forward</span></h2>
+            
+            <p class="body-text">You have a choice right now:</p>
+            
+            <h3 class="section-subhead">Path One: Single-Project Approach</h3>
+            
+            <p class="body-text">You implement your first project using what you just purchased. Great. Then when you want project #2, you start the vetting process over. And again for project #3. Each project is its own isolated effort.</p>
+            
+            <p class="body-text">This works. I did it this way for years. But it's exhausting and slow.</p>
+            
+            <h3 class="section-subhead">Path Two: Complete Team Approach</h3>
+            
+            <p class="body-text">You implement your first project AND build your team simultaneously. By the time your first project is done, you've also got 3-5 reliable specialists on your roster ready for the next one.</p>
+            
+            <p class="body-text">Projects #2, #3, #4 start almost immediately instead of weeks of searching. You build momentum instead of constantly resetting to zero.</p>
+            
+            <p class="body-text"><span class="conversion-bold">This is the approach that transformed my implementation capability after 30 years of trial and error.</span></p>
+            
+            <a href="#order" class="cta-button">
+                <span class="main-text">Choose Complete Capability</span>
+                <span class="sub-text">→ Build Your Team Starting Today</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- SECTION 8: Investment -->
+    <section class="section section-alt-light fade-in">
+        <div class="container">
+            <h2 class="subheadline">Your <span class="highlight">Investment</span></h2>
+            
+            <p class="body-text">The Implementation Masters Program™ is <strong>$97</strong>.</p>
+            
+            <p class="body-text">That's what you'd probably spend on two hours of some random freelancer's time - except this gives you the complete system for building and managing your own implementation team forever.</p>
+            
+            <p class="body-text">More importantly, it's the logical extension of what you just purchased. You've already decided to stop buying courses and start implementing. This ensures your implementation capability keeps growing project after project instead of plateauing after your first success.</p>
+        </div>
+    </section>
+
+    <!-- SECTION 9: Qualification -->
+    <section class="section section-dark fade-in">
+        <div class="container">
+            <h2 class="subheadline">This is For You If:</h2>
+            
+            <ul class="bullet-list">
+                <li>You have multiple project ideas you want to implement, not just one</li>
+                <li>You'd rather build a reliable team once than vet new freelancers every single time</li>
+                <li>You want implementation to get easier over time, not stay equally effortful</li>
+                <li>You're ready for complete mastery, not just basic capability</li>
+            </ul>
+            
+            <h2 class="subheadline" style="margin-top: 40px;">This is NOT For You If:</h2>
+            
+            <ul class="bullet-list">
+                <li>You only have one thing you ever want to implement and no future project ideas</li>
+                <li>You prefer starting from scratch every time (some people genuinely do)</li>
+                <li>You're not planning to be active with online implementation beyond this first project</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SECTION 10: Guarantee and Close -->
+    <section class="section section-light fade-in">
+        <div class="container">
+            <h2 class="subheadline">My <span class="highlight">Guarantee</span></h2>
+            
+            <p class="body-text">This program builds directly on what you just purchased. It uses the same vetting skills, the same management approach, the same freelancer platforms. You're extending what works, not learning something completely different.</p>
+            
+            <p class="body-text">If you successfully complete your first implementation using the main product, you have every skill needed to build your team using this program.</p>
+            
+            <p class="body-text">I've been doing this for 30 years. The team approach is what separates people who stay stuck at one project from people who can confidently implement anything.</p>
+            
+            <a href="#order" class="cta-button">
+                <span class="main-text">YES! Add The Implementation Masters Program™</span>
+                <span class="sub-text">→ Complete Team System Added for $97</span>
+            </a>
+            
+            <p class="body-text" style="text-align: center; margin-top: 30px; font-style: italic;">Complete team-building system added to your purchase. Start building your roster alongside your first implementation.</p>
+            
+            <p class="body-text" style="text-align: center; margin-top: 40px; margin-bottom: 40px;">───────────</p>
+            
+            <a href="#decline" class="cta-button" style="background-color: #666666;">
+                <span class="main-text">No Thanks, I'll Figure It Out Later</span>
+                <span class="sub-text">→ Continue to Original Purchase</span>
+            </a>
+            
+            <p class="body-text" style="text-align: center; margin-top: 30px; font-style: italic;">You'll continue to your original purchase. The Implementation Masters Program™ won't be available at this price after you leave this page.</p>
+            
+            <p class="body-text" style="text-align: center; margin-top: 40px; margin-bottom: 40px;">───────────</p>
+            
+            <p class="body-text">Look, you've already proven you're serious by making this purchase. You're not like the people who just buy courses and never implement anything.</p>
+            
+            <p class="body-text">This is simply the logical next step - building complete capability rather than stopping at basic capability.</p>
+            
+            <p class="body-text">Either way, you're going to get your first thing implemented. I'm excited for your "holy crap" moment.</p>
+            
+            <p class="body-text">But if you want that moment to be the first of many instead of an isolated success... the team system is how you make that happen.</p>
+            
+            <p class="body-text">Badda bing.</p>
+            
+            <p class="body-text" style="margin-top: 40px;"><strong>Dr. Mark Johnson</strong></p>
+            <p class="body-text" style="font-style: italic;">The 66-year-old who's been building freelancer teams since before most gurus were born</p>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            document.querySelectorAll('.benefit-list li, .bullet-list li').forEach((li, index) => {
+                li.style.animationDelay = `${(index % 6) * 0.1 + 0.1}s`;
+                observer.observe(li);
+            });
+        });
+    </script>
+
+</body>
+</html>
