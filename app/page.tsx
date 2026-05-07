@@ -456,12 +456,12 @@ export default function Home() {
           <div className="flex w-full min-w-0 flex-wrap items-center justify-center gap-3 sm:gap-6 md:gap-8">
             <div className="min-w-0 max-w-full text-center">
               <Image
-                src="/new_logo.png"
+                src="/image (11).png"
                 alt="SENIORS STUCK"
-                width={400}
-                height={80}
-                sizes="(max-width: 640px) 85vw, 400px"
-                className="mx-auto h-auto w-full max-w-[min(100%,280px)] object-contain sm:max-w-sm md:max-w-md"
+                width={800}
+                height={800}
+                sizes="(max-width: 640px) 95vw, 700px"
+                className="mx-auto h-auto w-full max-w-[min(100%,700px)] object-contain sm:max-w-lg md:max-w-xl"
                 priority
               />
             </div>
