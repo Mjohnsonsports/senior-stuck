@@ -2,6 +2,29 @@
 
 import { useEffect, useState } from 'react';
 
+function SocialIconLink({
+  href,
+  label,
+  children,
+}: {
+  href: string;
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      aria-label={label}
+      title={label}
+      className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-white/15 bg-white/5 text-white transition-colors hover:bg-white/10 hover:text-purple-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-300/60"
+    >
+      {children}
+    </a>
+  );
+}
+
 export default function MainNav() {
   const [open, setOpen] = useState(false);
 
@@ -36,10 +59,62 @@ export default function MainNav() {
     { href: '/freelancer-detector-kit', label: 'Freelancer Detector Kit' },
   ] as const;
 
+  const socialLinks = [
+    {
+      href: 'https://instagram.com/seniorsstuck/?hl=en',
+      label: 'Instagram: SeniorsStuck',
+      icon: (
+        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden>
+          <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.25-2.4a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3Z" />
+        </svg>
+      ),
+    },
+    {
+      href: 'https://www.facebook.com/seniorsstuck/',
+      label: 'Facebook: SeniorsStuck (Page 1)',
+      icon: (
+        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden>
+          <path d="M13.5 22v-8h2.8l.5-3H13.5V9.1c0-.9.3-1.6 1.7-1.6h1.9V4.8c-.3 0-1.5-.1-2.9-.1-2.9 0-4.9 1.8-4.9 5V11H6.6v3h2.7v8h4.2Z" />
+        </svg>
+      ),
+    },
+    {
+      href: 'https://www.facebook.com/profile.php?id=61587465736036',
+      label: 'Facebook: SeniorsStuck (Page 2)',
+      icon: (
+        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden>
+          <path d="M13.5 22v-8h2.8l.5-3H13.5V9.1c0-.9.3-1.6 1.7-1.6h1.9V4.8c-.3 0-1.5-.1-2.9-.1-2.9 0-4.9 1.8-4.9 5V11H6.6v3h2.7v8h4.2Z" />
+        </svg>
+      ),
+    },
+    {
+      href: 'https://www.tiktok.com/@serniorsstuck',
+      label: 'TikTok: serniorsstuck',
+      icon: (
+        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden>
+          <path d="M16.7 2h-3.1v13.1a2.7 2.7 0 1 1-2.1-2.6V9.4a5.8 5.8 0 1 0 5.3 5.7V10a7.2 7.2 0 0 0 4.2 1.4V8.3A4.3 4.3 0 0 1 16.7 4V2Z" />
+        </svg>
+      ),
+    },
+  ] as const;
+
   return (
     <>
-      <div className="fixed top-0 right-0 left-0 z-50 w-full max-w-[100vw] border-b border-purple-300/20 bg-linear-to-r from-[#1a0733] via-[#120625] to-black shadow-sm">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-3 py-3 sm:px-6 md:justify-center md:px-8 md:py-5">
+      <div className="fixed top-0 right-0 left-0 z-50 w-full max-w-[100vw] shadow-sm">
+        {/* Top bar */}
+        <div className="w-full bg-black">
+          <div className="mx-auto flex max-w-7xl items-center justify-center gap-2 px-3 py-2 sm:px-6 md:px-8">
+            {socialLinks.map(({ href, label, icon }) => (
+              <SocialIconLink key={href} href={href} label={label}>
+                {icon}
+              </SocialIconLink>
+            ))}
+          </div>
+        </div>
+
+        {/* Main nav */}
+        <div className="w-full border-b border-purple-300/20 bg-linear-to-r from-[#1a0733] via-[#120625] to-black">
+          <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-3 py-3 sm:px-6 md:px-8 md:py-5">
           <span className="min-w-0 shrink truncate text-base font-bold text-white md:hidden">
             SeniorsStuck
           </span>
@@ -69,6 +144,7 @@ export default function MainNav() {
             </ul>
           </nav>
         </div>
+      </div>
       </div>
 
       {/* Mobile: right drawer */}
