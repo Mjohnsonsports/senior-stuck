@@ -61,6 +61,15 @@ export default function MainNav() {
 
   const socialLinks = [
     {
+      href: 'https://www.youtube.com/@SeniorsStuck',
+      label: 'YouTube: SeniorsStuck',
+      icon: (
+        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden>
+          <path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.7 4.6 12 4.6 12 4.6s-5.7 0-7.5.5A3 3 0 0 0 2.4 7.2 31.7 31.7 0 0 0 2 12a31.7 31.7 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.8.5 7.5.5 7.5.5s5.7 0 7.5-.5a3 3 0 0 0 2.1-2.1A31.7 31.7 0 0 0 22 12a31.7 31.7 0 0 0-.4-4.8ZM10 15.5v-7l6 3.5-6 3.5Z" />
+        </svg>
+      ),
+    },
+    {
       href: 'https://instagram.com/seniorsstuck/?hl=en',
       label: 'Instagram: SeniorsStuck',
       icon: (

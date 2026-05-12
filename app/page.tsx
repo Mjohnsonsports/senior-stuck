@@ -533,7 +533,7 @@ export default function Home() {
             <div className="flex min-w-0 w-full flex-col overflow-hidden rounded-2xl border-2 border-white/40 bg-purple-800/50 shadow-[8px_8px_0_0_rgba(0,0,0,0.25)] lg:col-span-5">
               <div className="border-b border-white/15 bg-white">
                 <Image
-                  src="/image%20(6).png"
+                  src="/unstuckguide.jpg"
                   alt="The SeniorsStuck.com guide — Getting you unstuck. Download your FREE Guide Today."
                   width={900}
                   height={700}
@@ -587,7 +587,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-3 pb-6 sm:px-6 sm:pb-8" aria-label="3 pack bundle">
+      <section className="px-3 pb-6 sm:px-6 sm:pb-8 pt-4" aria-label="3 pack bundle">
         <div className="container mx-auto max-w-7xl">
           <div className="flex min-w-0 max-w-full flex-col items-center gap-3 text-center">
             <Image
