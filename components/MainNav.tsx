@@ -53,7 +53,7 @@ export default function MainNav() {
 
   const items = [
     { href: '/', label: 'Home' },
-    { href: '/product', label: 'Product' },
+    { href: '/product', label: 'Newsletter' },
     { href: '/enough-is-enough', label: 'Enough is Enough' },
     { href: '/implementation-masters-program', label: 'Implementation Masters Program' },
     { href: '/freelancer-detector-kit', label: 'Freelancer Detector Kit' },
@@ -102,6 +102,15 @@ export default function MainNav() {
       icon: (
         <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden>
           <path d="M16.7 2h-3.1v13.1a2.7 2.7 0 1 1-2.1-2.6V9.4a5.8 5.8 0 1 0 5.3 5.7V10a7.2 7.2 0 0 0 4.2 1.4V8.3A4.3 4.3 0 0 1 16.7 4V2Z" />
+        </svg>
+      ),
+    },
+    {
+      href: 'https://www.pinterest.com/SeniorsStuck/_created/',
+      label: 'Pinterest: SeniorsStuck',
+      icon: (
+        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden>
+          <path d="M12.2 2C6.6 2 2 6.2 2 11.6c0 4.2 2.6 7.9 6.4 9.3-.1-.8-.2-2.1 0-3l1.4-5.7s-.4-.9-.4-2.1c0-2 1.2-3.5 2.7-3.5 1.3 0 1.9.9 1.9 2 0 1.2-.8 3.1-1.2 4.8-.3 1.4.7 2.5 2.1 2.5 2.5 0 4.4-2.6 4.4-6.4 0-3.3-2.4-5.7-5.9-5.7-4 0-6.4 3-6.4 6.1 0 1.2.5 2.6 1.1 3.3.1.2.1.3.1.5l-.4 1.6c-.1.5-.4.7-.8.5-1.5-.7-2.4-2.9-2.4-4.7 0-3.9 2.8-7.4 8.1-7.4 4.2 0 7.5 3 7.5 7.1 0 4.2-2.7 7.6-6.4 7.6-1.3 0-2.5-.6-2.9-1.5l-.8 3.1c-.3 1-1 2.4-1.5 3.2 1.1.3 2.2.4 3.4.4 5.6 0 10.2-4.2 10.2-9.6C22.4 6.2 17.8 2 12.2 2Z" />
         </svg>
       ),
     },

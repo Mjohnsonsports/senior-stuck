@@ -30,7 +30,7 @@ const INTRO_VIDEO_URL =
   '/Cracking%20the%20Code%20for%20Online%20Income_%20A%20Guide%20for%20Seniors.mp4';
 
 export default function Home() {
-  const leadMagnetUrl = '/_Lead%20magner%20pdf%20.pdf';
+  const leadMagnetUrl = '/SeniorsStuckFREEGUIDE.pdf%20(2)%20(1).pdf';
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -376,7 +376,7 @@ export default function Home() {
   const downloadPDF = () => {
     const link = document.createElement('a');
     link.href = leadMagnetUrl;
-    link.download = '_Lead magner pdf .pdf';
+    link.download = 'SeniorsStuckFREEGUIDE.pdf%20(2)%20(1).pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
