@@ -586,7 +586,83 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section
+        className="border-b border-purple-300/20 bg-gray-200"
+        aria-labelledby="what-is-seniors-stuck-video-heading"
+      >
+        <div className="container mx-auto  px-4 py-8 sm:px-6 sm:py-12 lg:py-16">
+          <div className="mx-auto w-full">
+            <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
+              <div className="w-[400px] sm:flex-1">
+                <div className="overflow-hidden rounded-2xl border-2 border-purple-300/30 bg-black shadow-[12px_12px_0_0_rgba(88,28,135,0.45)]">
+                  <video
+                    className="aspect-video w-full object-contain"
+                    controls
+                    playsInline
+                    preload="metadata"
+                    title="What is Seniors Stuck?"
+                  >
+                    <source src={INTRO_VIDEO_URL} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <p className="mt-4 text-base font-bold text-black sm:text-lg">
+                  SeniorsStuck.com - Dr. Mark Johnson, PhD, Author, Creator
+                </p>
+              </div>
 
+              <div className="w-full text-center sm:w-[500px] sm:text-left">
+                <a
+                  href="https://www.skool.com/levelup-marketing-alliance-3699/about?ref=8331ca09b4824f009baf5ba9d64f9ecf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                  aria-label="Open affiliate link"
+                >
+                  <Image
+                    src="/SS.png"
+                    alt="Seniors Stuck"
+                    width={720}
+                    height={405}
+                    sizes="(max-width: 640px) 92vw, 360px"
+                    className="h-auto w-full rounded-2xl border-2 border-purple-300/30 bg-white shadow-[8px_8px_0_0_rgba(88,28,135,0.25)]"
+                  />
+                </a>
+               
+             
+              </div>
+            </div>
+          </div>
+
+          {/* <div className="mx-auto mt-8 max-w-3xl text-center sm:mt-10">
+            <h1
+              id="what-is-seniors-stuck-video-heading"
+              className="text-balance text-3xl font-bold leading-tight text-black sm:text-4xl md:text-5xl lg:text-6xl"
+            >
+              What is Seniors Stuck?
+            </h1>
+            <p className="mt-4 text-lg font-bold text-purple-700 sm:text-xl md:text-2xl">
+              w/ Mark Johnson — Author, PhD, CEO
+            </p>
+          </div> */}
+
+          {/* <div className="mx-auto mt-10 max-w-7xl sm:mt-12">
+            <div className="relative overflow-hidden rounded-[28px] border-2 border-purple-300/35 bg-linear-to-b from-[#241046]/95 via-[#170a31]/95 to-black/95 p-6 shadow-[0_10px_35px_rgba(76,29,149,0.4)] ring-2 ring-purple-300/25 sm:p-8 md:p-10">
+              <div className="pointer-events-none absolute -top-8 -left-10 h-24 w-24 rounded-full bg-purple-300/20 blur-xl" aria-hidden />
+              <div className="pointer-events-none absolute -bottom-10 -right-10 h-28 w-28 rounded-full bg-fuchsia-300/20 blur-xl" aria-hidden />
+              <p className="text-center text-balance text-3xl font-extrabold leading-relaxed text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] sm:text-2xl md:text-4xl">
+                There are Millions of us out here online and seeking to earn money online
+              </p>
+              <p className="mt-6 text-center text-balance text-xl font-extrabold leading-relaxed text-purple-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] sm:text-2xl md:text-3xl">
+                We are all &quot;stuck&quot; confused &amp; tech overwhelm
+              </p>
+              <p className="mt-7 rounded-2xl border border-purple-300/40 bg-white/10 px-2 py-4 text-center text-balance text-2xl font-black leading-snug text-white shadow-[0_8px_24px_rgba(76,29,149,0.35)] sm:text-3xl md:text-4xl">
+                SeniorsStuck — will get you — &quot;Unstuck&quot; Today!
+              </p>
+            </div>
+          </div> */}
+        </div>
+      </section>
       <section className="px-3 pb-6 sm:px-6 sm:pb-8 pt-4" aria-label="3 pack bundle">
         <div className="container mx-auto max-w-7xl">
           <div className="flex min-w-0 max-w-full flex-col items-center gap-3 text-center">
@@ -611,55 +687,7 @@ export default function Home() {
 
       <HomePricingSection onCheckout={handleCheckout} checkoutLoading={checkoutLoading} />
 
-      <section
-        className="border-b border-purple-300/20 bg-linear-to-b from-[#17092f] via-[#0f0620] to-black"
-        aria-labelledby="what-is-seniors-stuck-video-heading"
-      >
-        <div className="container mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12 lg:py-16">
-          <div className="mx-auto w-full max-w-3xl">
-            <div className="overflow-hidden rounded-2xl border-2 border-purple-300/30 bg-black shadow-[12px_12px_0_0_rgba(88,28,135,0.45)]">
-              <video
-                className="aspect-video w-full object-contain"
-                controls
-                playsInline
-                preload="metadata"
-                title="What is Seniors Stuck?"
-              >
-                <source src={INTRO_VIDEO_URL} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </div>
-
-          <div className="mx-auto mt-8 max-w-3xl text-center sm:mt-10">
-            <h1
-              id="what-is-seniors-stuck-video-heading"
-              className="text-balance text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl"
-            >
-              What is Seniors Stuck?
-            </h1>
-            <p className="mt-4 text-lg font-bold text-purple-200 sm:text-xl md:text-2xl">
-              w/ Mark Johnson — Author, PhD, CEO
-            </p>
-          </div>
-
-          <div className="mx-auto mt-10 max-w-7xl sm:mt-12">
-            <div className="relative overflow-hidden rounded-[28px] border-2 border-purple-300/35 bg-linear-to-b from-[#241046]/95 via-[#170a31]/95 to-black/95 p-6 shadow-[0_10px_35px_rgba(76,29,149,0.4)] ring-2 ring-purple-300/25 sm:p-8 md:p-10">
-              <div className="pointer-events-none absolute -top-8 -left-10 h-24 w-24 rounded-full bg-purple-300/20 blur-xl" aria-hidden />
-              <div className="pointer-events-none absolute -bottom-10 -right-10 h-28 w-28 rounded-full bg-fuchsia-300/20 blur-xl" aria-hidden />
-              <p className="text-center text-balance text-3xl font-extrabold leading-relaxed text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] sm:text-2xl md:text-4xl">
-                There are Millions of us out here online and seeking to earn money online
-              </p>
-              <p className="mt-6 text-center text-balance text-xl font-extrabold leading-relaxed text-purple-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] sm:text-2xl md:text-3xl">
-                We are all &quot;stuck&quot; confused &amp; tech overwhelm
-              </p>
-              <p className="mt-7 rounded-2xl border border-purple-300/40 bg-white/10 px-2 py-4 text-center text-balance text-2xl font-black leading-snug text-white shadow-[0_8px_24px_rgba(76,29,149,0.35)] sm:text-3xl md:text-4xl">
-                SeniorsStuck — will get you — &quot;Unstuck&quot; Today!
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+     
 
       {/* About Us Section — copy unchanged; spacing & type scale tuned */}
       <section
