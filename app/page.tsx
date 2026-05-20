@@ -722,7 +722,7 @@ export default function Home() {
                 </div>
                 <div className="space-y-1 px-2 py-4 text-center sm:px-1 lg:text-left">
                   <h3 className="text-xl font-bold text-amber-900 sm:text-2xl">Dr. Mark Johnson</h3>
-                  <p className="text-base font-bold text-black sm:text-lg">Age 66, PhD, Author</p>
+                  <p className="text-base font-bold text-black sm:text-lg">Age 67, PhD, Author</p>
                   <p className="text-base font-bold text-black sm:text-lg">30 Years Experience Online</p>
                 </div>
               </div>
