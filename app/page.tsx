@@ -454,9 +454,9 @@ export default function Home() {
         <div className="flex min-w-0 flex-col items-center gap-3 sm:gap-4">
           {/* Header: left design + logo (2 elements only) */}
           <div className="flex w-full min-w-0 flex-wrap items-center justify-center gap-3 sm:gap-6 md:gap-8">
-            <div className="min-w-0 max-w-full text-center">
+            <div className="min-w-0 max-w-full text-center mt-3">
               <Image
-                src="/image (11).png"
+                src="/picture.png"
                 alt="SENIORS STUCK"
                 width={800}
                 height={800}
@@ -607,7 +607,7 @@ export default function Home() {
                   </video>
                 </div>
                 <p className="mt-4 text-base font-bold text-black sm:text-lg">
-                  SeniorsStuck.com - Dr. Mark Johnson, PhD, Author, Creator
+                Seniors "Stuck" Welcome from Dr. Mark Johnson
                 </p>
               </div>
 
@@ -620,7 +620,7 @@ export default function Home() {
                   aria-label="Open affiliate link"
                 >
                   <Image
-                    src="/SS.png"
+                    src="/picture.png"
                     alt="Seniors Stuck"
                     width={720}
                     height={405}
@@ -675,6 +675,20 @@ export default function Home() {
               className="mx-auto h-auto w-full max-w-[min(100%,320px)] object-contain sm:max-w-[380px] md:max-w-[420px]"
               priority
             />
+             <div className="overflow-hidden rounded-2xl border-2 border-purple-300/30 bg-black shadow-[12px_12px_0_0_rgba(88,28,135,0.45)]">
+                  <video
+                    className="aspect-square w-full object-contain"
+                    controls
+                    playsInline
+                    preload="metadata"
+                    title="What is Seniors Stuck?"
+                  >
+                    <source src='/2026SeniorsStuckNo1 (1) (1).mp4' type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <h4 className='text-2xl font-semibold mt-4'>Get Your FREE COURSE - WelcomeVideo - "Aha Moments" For You!</h4>
+
             <Link
               href="/#three-pack-bundle"
               className="inline-flex w-full max-w-[min(100%,320px)] items-center justify-center rounded-xl bg-purple-700 px-4 py-3.5 text-center text-sm font-bold leading-snug text-white shadow-[4px_4px_0_0_rgba(0,0,0,0.22)] transition-all hover:bg-purple-800 hover:shadow-[2px_2px_0_0_rgba(0,0,0,0.22)] active:translate-y-0.5 active:shadow-none sm:max-w-[380px] sm:px-5 sm:py-4 sm:text-base md:max-w-[420px]"
