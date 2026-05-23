@@ -666,16 +666,7 @@ export default function Home() {
       <section className="px-3 pb-6 sm:px-6 sm:pb-8 pt-4" aria-label="3 pack bundle">
         <div className="container mx-auto max-w-7xl">
           <div className="flex min-w-0 max-w-full flex-col items-center gap-3 text-center">
-            <Image
-              src="/header/image (27).png"
-              alt="Header Left — three product guides"
-              width={400}
-              height={100}
-              sizes="(max-width: 640px) 92vw, 400px"
-              className="mx-auto h-auto w-full max-w-[min(100%,320px)] object-contain sm:max-w-[380px] md:max-w-[420px]"
-              priority
-            />
-             <div className="overflow-hidden rounded-2xl border-2 border-purple-300/30 bg-black shadow-[12px_12px_0_0_rgba(88,28,135,0.45)]">
+          <div className="overflow-hidden rounded-2xl border-2 border-purple-300/30 bg-black shadow-[12px_12px_0_0_rgba(88,28,135,0.45)]">
                   <video
                     className="aspect-square w-full object-contain"
                     controls
@@ -688,6 +679,17 @@ export default function Home() {
                   </video>
                 </div>
                 <h4 className='text-2xl font-semibold mt-4'>Get Your FREE COURSE - WelcomeVideo - "Aha Moments" For You!</h4>
+
+            <Image
+              src="/header/image (27).png"
+              alt="Header Left — three product guides"
+              width={400}
+              height={100}
+              sizes="(max-width: 640px) 92vw, 400px"
+              className="mx-auto h-auto w-full max-w-[min(100%,320px)] object-contain sm:max-w-[380px] md:max-w-[420px]"
+              priority
+            />
+             
 
             <Link
               href="/#three-pack-bundle"
