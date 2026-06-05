@@ -3,6 +3,18 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   // Allow webhook routes to receive raw body
+  async rewrites() {
+    return {
+      afterFiles: [],
+      beforeFiles: [],
+      fallback: [
+        {
+          destination: "/",
+          source: "/:path*",
+        },
+      ],
+    };
+  },
   experimental: {
     serverActions: {
       bodySizeLimit: '2mb',
@@ -19,6 +31,16 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: '*.googleusercontent.com',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.supabase.co',
+        pathname: '/storage/v1/object/public/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+        pathname: '/images/**',
       },
     ],
   },
