@@ -176,6 +176,12 @@ export default function Home() {
     document.body.style.overflow = 'hidden';
   };
 
+  useEffect(() => {
+    if (window.location.hash === '#free-guide') {
+      openFormModal();
+    }
+  }, []);
+
   const closeFormModal = () => {
     setIsModalOpen(false);
     document.body.style.overflow = 'unset';
@@ -448,7 +454,7 @@ export default function Home() {
     <div className="relative min-h-screen overflow-x-hidden bg-white">
 
       <header className="relative z-40">
-        <MainNav />
+        <MainNav onFreeStarterKitClick={openFormModal} />
 
         <div className="container mx-auto max-w-full px-3 pt-2 pb-4 sm:px-4 sm:pt-4 sm:pb-6 mt-24">
         <div className="flex min-w-0 flex-col items-center gap-3 sm:gap-4">
@@ -490,6 +496,7 @@ export default function Home() {
 
       {/* Hero — value prop, CTAs, lead magnet */}
       <section
+        id="free-guide"
         className="relative z-10 bg-purple-700 px-3 pb-10 pt-2 text-white sm:px-6 sm:pb-12 sm:pt-6 lg:px-8"
         aria-labelledby="hero-heading"
       >
