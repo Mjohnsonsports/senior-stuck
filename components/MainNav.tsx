@@ -11,10 +11,7 @@ const resourceLinks = [
   { href: '/freelancer-detector-kit', label: 'Freelancer Detector Kit' },
 ] as const;
 
-const FREE_TRAINING_URL =
-  'https://www.skool.com/levelup-marketing-alliance-3699/about?ref=8331ca09b4824f009baf5ba9d64f9ecf';
 const BLOG_URL = 'https://www.seniorsstuck.com/blog';
-const CONTACT_EMAIL = 'mjohnsonsports@aol.com';
 
 type MainNavProps = {
   onFreeStarterKitClick?: () => void;
@@ -175,10 +172,10 @@ export default function MainNav({ onFreeStarterKitClick }: MainNavProps) {
 
   const navLinkClass = (active: boolean) =>
     [
-      'relative inline-flex items-center gap-1 pb-1 text-sm font-semibold tracking-wide transition-colors lg:text-[15px]',
+      'relative inline-flex items-center gap-1 pb-1 text-sm font-semibold tracking-wide text-purple-700 transition-colors lg:text-[15px]',
       active
-        ? 'text-purple-700 after:absolute after:-bottom-0.5 after:left-0 after:right-0 after:h-[3px] after:rounded-full after:bg-purple-700'
-        : 'text-slate-500 hover:text-purple-700',
+        ? 'after:absolute after:-bottom-0.5 after:left-0 after:right-0 after:h-[3px] after:rounded-full after:bg-purple-700'
+        : 'hover:text-purple-900',
     ].join(' ');
 
   const drawerLinkClass = (active: boolean) =>
@@ -195,19 +192,19 @@ export default function MainNav({ onFreeStarterKitClick }: MainNavProps) {
   };
 
   const FreeStarterKitButton = ({ className = '' }: { className?: string }) => {
-    const buttonClass = `inline-flex shrink-0 items-center justify-center rounded-full bg-purple-700 px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition-colors hover:bg-purple-800 sm:px-5 sm:text-[13px] ${className}`;
+    const buttonClass = `inline-flex shrink-0 items-center justify-center rounded-full bg-purple-700 px-4 py-2.5 text-center text-[11px] font-bold leading-tight text-white shadow-sm transition-colors hover:bg-purple-800 sm:px-5 sm:text-xs ${className}`;
 
     if (onFreeStarterKitClick) {
       return (
         <button type="button" className={buttonClass} onClick={onFreeStarterKitClick}>
-          Free Starter Kit
+          Free Making Money Online Guidebook
         </button>
       );
     }
 
     return (
       <Link href="/#free-guide" className={buttonClass} onClick={closeMobile}>
-        Free Starter Kit
+        Free Making Money Online Guidebook
       </Link>
     );
   };
@@ -288,13 +285,8 @@ export default function MainNav({ onFreeStarterKitClick }: MainNavProps) {
               </li>
 
               <li>
-                <a
-                  href={FREE_TRAINING_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={navLinkClass(false)}
-                >
-                  Free Training
+                <a href={BLOG_URL} target="_blank" rel="noreferrer" className={navLinkClass(false)}>
+                  Award-Winning Blog
                 </a>
               </li>
 
@@ -302,18 +294,6 @@ export default function MainNav({ onFreeStarterKitClick }: MainNavProps) {
                 <Link href="/#about-heading" className={navLinkClass(isAnchorActive('#about-heading'))}>
                   About Mark
                 </Link>
-              </li>
-
-              <li>
-                <a href={BLOG_URL} target="_blank" rel="noreferrer" className={navLinkClass(false)}>
-                  Blog
-                </a>
-              </li>
-
-              <li>
-                <a href={`mailto:${CONTACT_EMAIL}`} className={navLinkClass(false)}>
-                  Contact
-                </a>
               </li>
             </ul>
           </nav>
@@ -396,13 +376,13 @@ export default function MainNav({ onFreeStarterKitClick }: MainNavProps) {
 
               <li>
                 <a
-                  href={FREE_TRAINING_URL}
+                  href={BLOG_URL}
                   target="_blank"
                   rel="noreferrer"
                   className={drawerLinkClass(false)}
                   onClick={closeMobile}
                 >
-                  Free Training
+                  Award-Winning Blog
                 </a>
               </li>
 
@@ -414,24 +394,6 @@ export default function MainNav({ onFreeStarterKitClick }: MainNavProps) {
                 >
                   About Mark
                 </Link>
-              </li>
-
-              <li>
-                <a
-                  href={BLOG_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={drawerLinkClass(false)}
-                  onClick={closeMobile}
-                >
-                  Blog
-                </a>
-              </li>
-
-              <li>
-                <a href={`mailto:${CONTACT_EMAIL}`} className={drawerLinkClass(false)} onClick={closeMobile}>
-                  Contact
-                </a>
               </li>
             </ul>
           </nav>
