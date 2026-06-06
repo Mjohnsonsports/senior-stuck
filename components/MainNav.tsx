@@ -12,6 +12,7 @@ const resourceLinks = [
 ] as const;
 
 const BLOG_URL = 'https://www.seniorsstuck.com/blog';
+const CONTACT_EMAIL = 'mjohnsonsports@aol.com';
 
 type MainNavProps = {
   onFreeStarterKitClick?: () => void;
@@ -295,6 +296,12 @@ export default function MainNav({ onFreeStarterKitClick }: MainNavProps) {
                   About Mark
                 </Link>
               </li>
+
+              <li>
+                <a href={`mailto:${CONTACT_EMAIL}`} className={navLinkClass(false)}>
+                  Contact
+                </a>
+              </li>
             </ul>
           </nav>
 
@@ -394,6 +401,12 @@ export default function MainNav({ onFreeStarterKitClick }: MainNavProps) {
                 >
                   About Mark
                 </Link>
+              </li>
+
+              <li>
+                <a href={`mailto:${CONTACT_EMAIL}`} className={drawerLinkClass(false)} onClick={closeMobile}>
+                  Contact
+                </a>
               </li>
             </ul>
           </nav>

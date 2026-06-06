@@ -14,7 +14,17 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3030](http://localhost:3030) with your browser to see the result.
+
+## Blog CMS
+
+This project uses Sanity for blog editing:
+
+- Studio: `/studio`
+- Blog index: `/blog`
+- Post pages: `/blog/[slug]`
+
+See `BLOG_SANITY_SETUP.md` for Sanity environment variables, Studio setup, and publishing notes.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
@@ -32,5 +42,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+This repo includes `vercel.json` with `outputDirectory` set to `.next`. If the Vercel dashboard still says `dist`, clear that project setting or let the repo config override it.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
