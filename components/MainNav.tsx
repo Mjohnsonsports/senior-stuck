@@ -13,6 +13,8 @@ const resourceLinks = [
 
 const BLOG_URL = 'https://www.seniorsstuck.com/blog';
 const CONTACT_EMAIL = 'mjohnsonsports@aol.com';
+const FREE_COURSE_URL = 'https://freecourse.seniorsstuck.com/';
+const BOOKING_URL = 'https://freecourse.seniorsstuck.com/booking';
 
 type MainNavProps = {
   onFreeStarterKitClick?: () => void;
@@ -79,8 +81,8 @@ const socialLinks = [
     ),
   },
   {
-    href: 'https://www.tiktok.com/@serniorsstuck',
-    label: 'TikTok: serniorsstuck',
+    href: 'https://www.tiktok.com/@seniorsstuck', // FIXED: Correct TikTok URL
+    label: 'TikTok: SeniorsStuck',
     icon: (
       <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden>
         <path d="M16.7 2h-3.1v13.1a2.7 2.7 0 1 1-2.1-2.6V9.4a5.8 5.8 0 1 0 5.3 5.7V10a7.2 7.2 0 0 0 4.2 1.4V8.3A4.3 4.3 0 0 1 16.7 4V2Z" />
@@ -192,35 +194,34 @@ export default function MainNav({ onFreeStarterKitClick }: MainNavProps) {
     setMobileResourcesOpen(false);
   };
 
+  // FIXED: Button text and URL updated
   const FreeStarterKitButton = ({ className = '' }: { className?: string }) => {
     const buttonClass = `inline-flex shrink-0 items-center justify-center rounded-full bg-purple-700 px-4 py-2.5 text-center text-[11px] font-bold leading-tight text-white shadow-sm transition-colors hover:bg-purple-800 sm:px-5 sm:text-xs ${className}`;
 
-    if (onFreeStarterKitClick) {
-      return (
-        <button type="button" className={buttonClass} onClick={onFreeStarterKitClick}>
-          Free Making Money Online Guidebook
-        </button>
-      );
-    }
-
     return (
-      <Link href="/#free-guide" className={buttonClass} onClick={closeMobile}>
-        Free Making Money Online Guidebook
-      </Link>
+      <a href={FREE_COURSE_URL} target="_blank" rel="noreferrer" className={buttonClass}>
+        Click For Free Course, 8 Video Lessons
+      </a>
     );
   };
 
   return (
     <>
       <div className="fixed top-0 right-0 left-0 z-50 w-full max-w-[100vw] shadow-sm">
-        {/* Social top bar */}
+        {/* Social top bar with cool text */}
         <div className="w-full bg-black">
-          <div className="mx-auto flex max-w-7xl items-center justify-center gap-2 px-3 py-2 sm:px-6 md:px-8">
-            {socialLinks.map(({ href, label, icon }) => (
-              <SocialIconLink key={href} href={href} label={label}>
-                {icon}
-              </SocialIconLink>
-            ))}
+          <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-3 py-2 sm:px-6 md:px-8">
+            {/* NEW: Cool reversing text with pointing finger */}
+            <div className="hidden animate-pulse text-sm font-medium text-white/80 sm:block">
+              👉 Check Out Seniors Stuck On Social Media 👈
+            </div>
+            <div className="flex items-center justify-center gap-2 sm:justify-end sm:ml-auto">
+              {socialLinks.map(({ href, label, icon }) => (
+                <SocialIconLink key={href} href={href} label={label}>
+                  {icon}
+                </SocialIconLink>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -297,9 +298,10 @@ export default function MainNav({ onFreeStarterKitClick }: MainNavProps) {
                 </Link>
               </li>
 
+              {/* FIXED: "Contact Mark" instead of "Contact", with booking URL */}
               <li>
-                <a href={`mailto:${CONTACT_EMAIL}`} className={navLinkClass(false)}>
-                  Contact
+                <a href={BOOKING_URL} target="_blank" rel="noreferrer" className={navLinkClass(false)}>
+                  Contact Mark
                 </a>
               </li>
             </ul>
@@ -403,9 +405,10 @@ export default function MainNav({ onFreeStarterKitClick }: MainNavProps) {
                 </Link>
               </li>
 
+              {/* FIXED: Mobile "Contact Mark" with booking URL */}
               <li>
-                <a href={`mailto:${CONTACT_EMAIL}`} className={drawerLinkClass(false)} onClick={closeMobile}>
-                  Contact
+                <a href={BOOKING_URL} target="_blank" rel="noreferrer" className={drawerLinkClass(false)} onClick={closeMobile}>
+                  Contact Mark
                 </a>
               </li>
             </ul>
