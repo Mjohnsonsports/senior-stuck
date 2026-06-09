@@ -42,7 +42,6 @@ function SocialIconLink({
     </a>
   );
 }
-
 const socialLinks = [
   {
     href: 'https://www.youtube.com/@SeniorsStuck',
@@ -210,12 +209,13 @@ export default function MainNav({ onFreeStarterKitClick }: MainNavProps) {
       <div className="fixed top-0 right-0 left-0 z-50 w-full max-w-[100vw] shadow-sm">
         {/* Social top bar with cool text */}
         <div className="w-full bg-black">
-          <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-3 py-2 sm:px-6 md:px-8">
-            {/* NEW: Cool reversing text with pointing finger */}
-            <div className="hidden animate-pulse text-sm font-medium text-white/80 sm:block">
-              👉 Check Out Seniors Stuck On Social Media 👈
+          <div className="mx-auto flex max-w-7xl items-center justify-end gap-3 px-3 py-2 sm:px-6 md:px-8">
+            {/* Keep the blinking callout anchored beside the social icons on the right. */}
+            <div className="hidden animate-pulse text-right text-sm font-medium leading-tight text-white/80 sm:block">
+              <span className="whitespace-nowrap">Check Out (&quot;Seniors Stuck&quot;).com On Social Media</span>{' '}
+              <span aria-hidden>👉</span>
             </div>
-            <div className="flex items-center justify-center gap-2 sm:justify-end sm:ml-auto">
+            <div className="flex shrink-0 items-center justify-center gap-2">
               {socialLinks.map(({ href, label, icon }) => (
                 <SocialIconLink key={href} href={href} label={label}>
                   {icon}
@@ -421,4 +421,4 @@ export default function MainNav({ onFreeStarterKitClick }: MainNavProps) {
       </div>
     </>
   );
-}
+} 
