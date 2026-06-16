@@ -42,7 +42,7 @@ export default function PricingSection({
       className="container relative z-10 mx-auto max-w-full overflow-x-hidden px-3 py-8 sm:px-6 sm:py-10"
       aria-label="Newsletter and product offers"
     >
-      <div className="mx-auto max-w-5xl min-w-0">
+      <div className="mx-auto max-w-7xl min-w-0">
         {/* <div className="bg-linear-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-6 sm:p-8 lg:p-12 border-2 border-purple-500/30 shadow-2xl mb-8">
           <div className="text-center mb-8">
             <p className="text-gray-700 text-base sm:text-lg lg:text-xl leading-relaxed max-w-3xl mx-auto mb-6">
@@ -255,7 +255,7 @@ export default function PricingSection({
             </p>
           </div>
 
-          <div className="grid min-w-0 grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid min-w-0 grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <div className="bg-linear-to-br from-red-600/20 via-red-700/10 to-red-600/20 backdrop-blur-sm rounded-xl sm:rounded-2xl p-6 border-2 border-red-500/40 shadow-2xl">
               <div className="text-center">
                 <div className="inline-block bg-red-500/20 border border-red-400/50 rounded-full px-3 py-1 mb-4">
@@ -313,6 +313,29 @@ export default function PricingSection({
                   className="w-full h-44 object-cover rounded-lg border border-gray-300 shadow-md mb-4"
                 />
                 <h4 className="mb-2 wrap-break-word px-0.5 text-lg font-bold text-black sm:text-xl">The Freelancer Detection Kit - $17</h4>
+                <p className="text-sm text-gray-700 mb-6">
+                  Purchase and download today.
+                </p>
+                <Link
+                  href="/freelancer-detector-kit"
+                  className="inline-block w-full rounded-lg bg-purple-700 px-3 py-3 text-center text-sm font-bold leading-snug text-white wrap-break-word transition-colors hover:bg-purple-800 sm:px-4 sm:text-base"
+                >
+                  Click for details on Detection Kit -
+                </Link>
+              </div>
+            </div>
+
+            <div className="bg-linear-to-br from-sky-600/20 via-sky-700/10 to-sky-600/20 backdrop-blur-sm rounded-xl sm:rounded-2xl p-6 border-2 border-sky-500/40 shadow-2xl">
+              <div className="text-center">
+                <div className="inline-block bg-sky-500/20 border border-sky-400/50 rounded-full px-3 py-1 mb-4">
+                  <span className="text-sky-700 text-xs font-semibold">✅ POPULAR</span>
+                </div>
+                <img
+                  src="/ZZZZ7.77_ (1) (2).png"
+                  alt="Freelancer Detector Kit"
+                  className="w-full h-48 object-cover rounded-lg border border-gray-300 shadow-md mb-4"
+                />
+                <h4 className="mb-2 wrap-break-word px-0.5 text-lg font-bold text-black sm:text-xl">7 Bundle Set - $7.77</h4>
                 <p className="text-sm text-gray-700 mb-6">
                   Purchase and download today.
                 </p>
