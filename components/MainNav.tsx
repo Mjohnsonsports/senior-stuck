@@ -9,6 +9,8 @@ const resourceLinks = [
   { href: '/enough-is-enough', label: 'Enough is Enough' },
   { href: '/implementation-masters-program', label: 'Implementation Masters Program' },
   { href: '/freelancer-detector-kit', label: 'Freelancer Detector Kit' },
+  { href: '/bundle', label: '7 for $7.77 Bundle' },
+
 ] as const;
 
 const BLOG_URL = 'https://www.seniorsstuck.com/blog';
@@ -301,7 +303,7 @@ export default function MainNav({ onFreeStarterKitClick }: MainNavProps) {
               {/* FIXED: "Contact Mark" instead of "Contact", with booking URL */}
               <li>
                 <a href={BOOKING_URL} target="_blank" rel="noreferrer" className={navLinkClass(false)}>
-                  Contact Mark
+                Book a Call with Mark
                 </a>
               </li>
             </ul>
