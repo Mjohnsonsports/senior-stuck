@@ -58,7 +58,7 @@ export default function PricingSection({
               <svg className="w-5 h-5 text-green-400 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
-              <span>4 weekly editions per month</span>
+              <span>4 weekly editions each month</span>
             </div>
             <div className="flex items-center gap-3 text-gray-700">
               <svg className="w-5 h-5 text-green-400 shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -98,7 +98,7 @@ export default function PricingSection({
                 Monthly Plan - Newsletter
               </h3>
               <p className="text-3xl sm:text-4xl font-bold text-black mb-1">
-                $9<span className="text-lg">/month</span>
+                $9 Today
               </p>
               <p className="text-gray-700 text-sm mb-4">Recurring monthly subscription</p>
               <p className="text-gray-600 text-sm mb-6">
@@ -155,7 +155,7 @@ export default function PricingSection({
             </div>
           </div>
 
-          {/* Monthly Plan - $9/month */}
+          {/* Monthly Plan - $9 Today */}
           {/* <div className="bg-linear-to-br from-purple-600/20 via-purple-700/10 to-purple-600/20 backdrop-blur-sm rounded-xl sm:rounded-2xl p-6 sm:p-8 border-2 border-purple-500/40 shadow-2xl">
             <div className="text-center">
               <div className="inline-block bg-purple-500/20 border border-purple-400/50 rounded-full px-3 py-1 mb-4">
@@ -165,7 +165,7 @@ export default function PricingSection({
                 Monthly Plan
               </h3>
               <p className="text-3xl sm:text-4xl font-bold text-white mb-1">
-                $9<span className="text-lg">/month</span>
+                $9 Today
               </p>
               <p className="text-purple-300 text-sm mb-4">$108 total (12 months)</p>
               <p className="text-purple-200 text-sm mb-6">
@@ -194,7 +194,7 @@ export default function PricingSection({
                   ? 'Price ID Not Configured' 
                   : checkoutLoading === MONTHLY_PRICE_ID 
                   ? 'Processing...' 
-                  : 'Subscribe $9/month'}
+                  : 'Subscribe $9 Today'}
               </button>
             </div>
           </div> */}
@@ -266,9 +266,9 @@ export default function PricingSection({
                   alt="Enough is Enough"
                   className="w-full h-44 object-cover rounded-lg border border-gray-300 shadow-md mb-4"
                 />
-                <h4 className="mb-2 wrap-break-word px-0.5 text-lg font-bold text-black sm:text-xl">Enough is Enough - $9</h4>
+                <h4 className="mb-2 wrap-break-word px-0.5 text-lg font-bold text-black sm:text-xl">Enough is Enough - $9 Today</h4>
                 <p className="text-sm text-gray-700 mb-6">
-                  Purchase and download today.
+                  Purchase today and your order will be sent to your email later today - digital PDF.
                 </p>
                 <Link
                   href="/enough-is-enough"
@@ -289,9 +289,9 @@ export default function PricingSection({
                   alt="Implementation Masters Program"
                   className="w-full h-44 object-cover rounded-lg border border-gray-300 shadow-md mb-4"
                 />
-                <h4 className="mb-2 wrap-break-word px-0.5 text-lg font-bold text-black sm:text-xl">Implementation Master Program - $27</h4>
+                <h4 className="mb-2 wrap-break-word px-0.5 text-lg font-bold text-black sm:text-xl">Implementation Masters Program - $27 Today</h4>
                 <p className="text-sm text-gray-700 mb-6">
-                  Purchase and download today.
+                  Purchase today and your order will be sent to your email later today - digital PDF.
                 </p>
                 <Link
                   href="/implementation-masters-program"
@@ -312,9 +312,9 @@ export default function PricingSection({
                   alt="Freelancer Detector Kit"
                   className="w-full h-44 object-cover rounded-lg border border-gray-300 shadow-md mb-4"
                 />
-                <h4 className="mb-2 wrap-break-word px-0.5 text-lg font-bold text-black sm:text-xl">The Freelancer Detection Kit - $17</h4>
+                <h4 className="mb-2 wrap-break-word px-0.5 text-lg font-bold text-black sm:text-xl">The Freelancer Detection Kit - $17 Today</h4>
                 <p className="text-sm text-gray-700 mb-6">
-                  Purchase and download today.
+                  Purchase today and your order will be sent to your email later today - digital PDF.
                 </p>
                 <Link
                   href="/freelancer-detector-kit"

@@ -16,15 +16,15 @@ const Bundle = () => {
           alt="Freelancer Detector Kit"
           className="w-full h-full object-cover rounded-lg border border-gray-300 shadow-md mb-4"
         />
-        <h4 className="mb-2 wrap-break-word px-0.5 text-lg font-bold text-black sm:text-xl">7 Bundle Set - $7.77</h4>
+        <h4 className="mb-2 wrap-break-word px-0.5 text-lg font-bold text-black sm:text-xl">7 EBooks Bundle – $7.77 Today</h4>
         <p className="text-sm text-gray-700 mb-6">
-          Purchase and download today.
+          Purchase today and your order will be sent to your email later today - digital PDF.
         </p>
         <Link
           href="#"
           className="inline-block w-auto rounded-lg bg-purple-700 px-3 py-3 text-center text-sm font-bold leading-snug text-white wrap-break-word transition-colors hover:bg-purple-800 sm:px-4 sm:text-base"
         >
-          Click for details on 7for $7.77 Bundle
+          Click for details on 7 EBooks Bundle
         </Link>
       </div>
     </div>

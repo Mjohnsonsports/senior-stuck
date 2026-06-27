@@ -450,39 +450,56 @@ export default function Home() {
       <header className="relative z-40">
         <MainNav />
 
-        <div className="container mx-auto max-w-full px-3 pt-2 pb-4 sm:px-4 sm:pt-4 sm:pb-6 mt-24">
-        <div className="flex min-w-0 flex-col items-center gap-3 sm:gap-4">
-          {/* Header: left design + logo (2 elements only) */}
-          <div className="flex w-full min-w-0 flex-wrap items-center justify-center gap-3 sm:gap-6 md:gap-8">
-            <div className="min-w-0 max-w-full text-center mt-3">
+        <div className="container mx-auto px-3 pt-16 pb-4 sm:px-4 sm:pt-4 sm:pb-6 mt-32">
+        <div className="grid min-w-0 grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
+          <div className="flex min-w-0 flex-col items-center text-center">
+            <div className="w-full min-w-0">
               <Image
                 src="/picture.png"
                 alt="SENIORS STUCK"
                 width={800}
                 height={800}
-                sizes="(max-width: 640px) 95vw, 700px"
-                className="mx-auto h-auto w-full max-w-[min(100%,700px)] object-contain sm:max-w-lg md:max-w-xl"
+                sizes="(max-width: 1024px) 95vw, 45vw"
+                className="mx-auto h-auto w-full max-w-[min(100%,700px)] object-contain"
                 priority
               />
             </div>
+            <div className="mt-4 space-y-2 text-purple-700 sm:mt-5">
+              <p className="max-w-2xl text-balance text-xl font-bold leading-tight sm:text-2xl lg:text-[2rem]">
+                For the millions who are &quot;Stuck&quot; as you seek online and home business work online - We have your solutions here at SeniorsStuck.com
+              </p>
+              <p className="text-2xl font-bold leading-tight sm:text-3xl lg:text-[2.5rem]">
+                Welcome Home
+              </p>
+              <p className="text-lg font-bold leading-tight sm:text-2xl lg:text-[2rem]">
+                Mark Johnson, PhD, Mentor, CEO
+              </p>
+            </div>
           </div>
 
-          {/* Statement, Welcome, and Author - Below Logo */}
-          <div className="flex min-w-0 flex-col items-center gap-2 text-center">
-            {/* Main Statement */}
-            <p className="mb-2 max-w-7xl px-1 text-balance text-[48px] font-bold leading-tight text-purple-700 sm:mb-4 sm:px-0">
-              For the millions who are "Stuck" as you seek online and home business work online - We have your solutions here at SeniorsStuck.com
-            </p>
-
-            {/* Welcome Line */}
-            <p className="mb-1 text-[48px] font-bold leading-tight text-purple-700 sm:mb-2">
-              Welcome Home
-            </p>
-
-            {/* Author/Owner Name */}
-            <p className="text-[48px] font-bold leading-tight text-purple-700">
-              Mark Johnson, PhD, Mentor, CEO
-            </p>
+          <div className="flex min-w-0 flex-col items-center text-center">
+            <div className="w-full min-w-0">
+              <Image
+                src="/image (19).png"
+                alt="Senior Stuck proven online business strategies for 55 plus"
+                width={900}
+                height={700}
+                sizes="(max-width: 1024px) 95vw, 45vw"
+                className="mx-auto h-auto w-full max-w-[min(100%,700px)] object-contain"
+                priority
+              />
+            </div>
+            <div className="mt-4 space-y-2 text-purple-700 sm:mt-5">
+              <p className="text-xl font-bold leading-tight sm:text-2xl lg:text-[2rem]">
+                SENIOR STUCK - Proven Online Business Strategies for 55+
+              </p>
+              <p className="max-w-2xl text-balance text-lg font-bold leading-tight sm:text-xl lg:text-[1.5rem]">
+                Weekly, no-fluff guidance from Dr. Mark Johnson to build online income.
+              </p>
+              <p className="max-w-2xl text-balance text-base font-bold leading-tight sm:text-lg lg:text-xl">
+                Get unstuck with proven strategies tailored for seniors.
+              </p>
+            </div>
           </div>
         </div>
         </div>

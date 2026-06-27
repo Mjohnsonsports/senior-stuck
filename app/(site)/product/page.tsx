@@ -9,7 +9,7 @@ export default function ProductPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen mt-16 bg-white">
       <header className="relative z-50">
         <MainNav />
       </header>

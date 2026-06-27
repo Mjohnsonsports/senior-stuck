@@ -18,7 +18,7 @@ const PRODUCTS: Record<string, ProductConfig> = {
     title: 'Monthly Plan - Newsletter',
     description: 'Weekly digital topics and practical online income guidance for seniors.',
     image: '/banner.png',
-    priceLabel: '$9/month',
+    priceLabel: '$9 Today',
     priceId: process.env.NEXT_PUBLIC_STRIPE_MONTHLY_PRICE_ID || '',
   },
   'newsletter-yearly': {
