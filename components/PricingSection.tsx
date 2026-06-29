@@ -255,7 +255,7 @@ export default function PricingSection({
             </p>
           </div>
 
-          <div className="grid min-w-0 grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid min-w-0 grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <div className="bg-linear-to-br from-red-600/20 via-red-700/10 to-red-600/20 backdrop-blur-sm rounded-xl sm:rounded-2xl p-6 border-2 border-red-500/40 shadow-2xl">
               <div className="text-center">
                 <div className="inline-block bg-red-500/20 border border-red-400/50 rounded-full px-3 py-1 mb-4">
@@ -321,6 +321,29 @@ export default function PricingSection({
                   className="inline-block w-full rounded-lg bg-purple-700 px-3 py-3 text-center text-sm font-bold leading-snug text-white wrap-break-word transition-colors hover:bg-purple-800 sm:px-4 sm:text-base"
                 >
                   Click for details on Detection Kit -
+                </Link>
+              </div>
+            </div>
+
+            <div className="bg-linear-to-br from-emerald-600/20 via-emerald-700/10 to-emerald-600/20 backdrop-blur-sm rounded-xl sm:rounded-2xl p-6 border-2 border-emerald-500/40 shadow-2xl">
+              <div className="text-center">
+                <div className="inline-block bg-emerald-500/20 border border-emerald-400/50 rounded-full px-3 py-1 mb-4">
+                  <span className="text-emerald-700 text-xs font-semibold">📚 BUNDLE</span>
+                </div>
+                <img
+                  src="/ZZZZ7.77_ (1) (2).png"
+                  alt="7 EBooks Bundle"
+                  className="w-full h-44 object-cover rounded-lg border border-gray-300 shadow-md mb-4"
+                />
+                <h4 className="mb-2 wrap-break-word px-0.5 text-lg font-bold text-black sm:text-xl">7 EBooks Bundle - $7.77 Today</h4>
+                <p className="text-sm text-gray-700 mb-6">
+                  Purchase today and your order will be sent to your email later today - digital PDF.
+                </p>
+                <Link
+                  href="/bundle"
+                  className="inline-block w-full rounded-lg bg-purple-700 px-3 py-3 text-center text-sm font-bold leading-snug text-white wrap-break-word transition-colors hover:bg-purple-800 sm:px-4 sm:text-base"
+                >
+                  Click for details on 7 EBooks Bundle
                 </Link>
               </div>
             </div>

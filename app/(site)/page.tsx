@@ -490,15 +490,11 @@ export default function Home() {
               />
             </div>
             <div className="mt-4 space-y-2 text-purple-700 sm:mt-5">
-              <p className="text-xl font-bold leading-tight sm:text-2xl lg:text-[2rem]">
-                SENIOR STUCK - Proven Online Business Strategies for 55+
-              </p>
+            
               <p className="max-w-2xl text-balance text-lg font-bold leading-tight sm:text-xl lg:text-[1.5rem]">
-                Weekly, no-fluff guidance from Dr. Mark Johnson to build online income.
-              </p>
-              <p className="max-w-2xl text-balance text-base font-bold leading-tight sm:text-lg lg:text-xl">
-                Get unstuck with proven strategies tailored for seniors.
-              </p>
+              Let's Get This Free Digital EBook - "MY Laptop Legacy" to 1 Million Readers!
+              Click for your free download today!              </p>
+             
             </div>
           </div>
         </div>
