@@ -437,6 +437,14 @@ export default function Home() {
     link.click();
     document.body.removeChild(link);
   };
+  const downloadOptPDF = () => {
+    const link = document.createElement('a');
+    link.href = leadMagnetUrl;
+    link.download = 'Book New for Mark_merged.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -536,7 +544,7 @@ export default function Home() {
         date: '',
       });
       setIsHeroOptInSuccess(true);
-      downloadPDF();
+      downloadOptPDF();
     } catch (error) {
       console.error('Error submitting hero opt-in form:', error);
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
