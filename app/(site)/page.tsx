@@ -6,11 +6,13 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 import type { User } from '@supabase/supabase-js';
-import { GOOGLE_SHEETS_WEBHOOK_URL, LEAD_SHEET_NAME } from '@/lib/googleSheets';
+import { GOOGLE_SHEETS_WEBHOOK_URL, LEAD_SHEET_NAME, LEAD_SHEET_NAME2 } from '@/lib/googleSheets';
 import MainNav from '@/components/MainNav';
 import HomePricingSection from '@/components/HomePricingSection';
 
 const WEBHOOK_URL = GOOGLE_SHEETS_WEBHOOK_URL;
+const HERO_OPT_IN_WEBHOOK_URL =
+  'https://script.google.com/macros/s/AKfycbyaFwQFZqKkkSwNc4yQwZvj_G5PaWCrJJ_azfFSw-L4m_bVcEw1EJc9GPrX9Q4X7BIJ/exec';
 
 interface FormData {
   name: string;
@@ -26,6 +28,19 @@ interface FormErrors {
   submit?: string;
 }
 
+interface HeroOptInFormData {
+  fullName: string;
+  email: string;
+  phone: string;
+  date: string;
+}
+
+interface HeroOptInFormErrors {
+  fullName?: string;
+  email?: string;
+  submit?: string;
+}
+
 const INTRO_VIDEO_URL =
   '/Cracking%20the%20Code%20for%20Online%20Income_%20A%20Guide%20for%20Seniors.mp4';
 
@@ -37,10 +52,19 @@ export default function Home() {
     message: '',
     date: '',
   });
+  const [heroOptInFormData, setHeroOptInFormData] = useState<HeroOptInFormData>({
+    fullName: '',
+    email: '',
+    phone: '',
+    date: '',
+  });
 
   const [errors, setErrors] = useState<FormErrors>({});
+  const [heroOptInErrors, setHeroOptInErrors] = useState<HeroOptInFormErrors>({});
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
+  const [isHeroOptInLoading, setIsHeroOptInLoading] = useState<boolean>(false);
+  const [isHeroOptInSuccess, setIsHeroOptInSuccess] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState<boolean>(false);
   const [authMode, setAuthMode] = useState<'login' | 'signup'>('login');
@@ -165,6 +189,38 @@ export default function Home() {
     }));
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({
+        ...prev,
+        [name]: undefined,
+      }));
+    }
+  };
+
+  const validateHeroOptInForm = (): boolean => {
+    const newErrors: HeroOptInFormErrors = {};
+
+    if (!heroOptInFormData.fullName.trim()) {
+      newErrors.fullName = 'Full name is required';
+    }
+
+    if (!heroOptInFormData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(heroOptInFormData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+
+    setHeroOptInErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleHeroOptInChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setHeroOptInFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    if (heroOptInErrors[name as keyof HeroOptInFormErrors]) {
+      setHeroOptInErrors((prev) => ({
         ...prev,
         [name]: undefined,
       }));
@@ -444,6 +500,54 @@ export default function Home() {
     }
   };
 
+  const handleHeroOptInSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsHeroOptInSuccess(false);
+
+    if (!validateHeroOptInForm()) {
+      return;
+    }
+
+    setIsHeroOptInLoading(true);
+    setHeroOptInErrors({});
+
+    try {
+      const jsonData = {
+        name: heroOptInFormData.fullName.trim(),
+        email: heroOptInFormData.email.trim(),
+        phone: heroOptInFormData.phone.trim(),
+        date: new Date().toISOString(),
+        sheetName: LEAD_SHEET_NAME2,
+      };
+
+      await fetch(HERO_OPT_IN_WEBHOOK_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(jsonData),
+      });
+
+      setHeroOptInFormData({
+        fullName: '',
+        email: '',
+        phone: '',
+        date: '',
+      });
+      setIsHeroOptInSuccess(true);
+      downloadPDF();
+    } catch (error) {
+      console.error('Error submitting hero opt-in form:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      setHeroOptInErrors({
+        submit: `Failed to submit form: ${errorMessage}. Please check your connection and try again.`,
+      });
+    } finally {
+      setIsHeroOptInLoading(false);
+    }
+  };
+
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-white">
 
@@ -489,12 +593,99 @@ export default function Home() {
                 priority
               />
             </div>
-            <div className="mt-4 space-y-2 text-purple-700 sm:mt-5">
-            
-              <p className="max-w-2xl text-balance text-lg font-bold leading-tight sm:text-xl lg:text-[1.5rem]">
-              Let's Get This Free Digital EBook - "MY Laptop Legacy" to 1 Million Readers!
-              Click for your free download today!              </p>
-             
+            <div className="mt-4 w-full max-w-2xl space-y-4 rounded-2xl border-2 border-purple-200 bg-white p-4 text-left shadow-lg sm:mt-5 sm:p-6">
+              <form onSubmit={handleHeroOptInSubmit} noValidate className="space-y-4">
+                {heroOptInErrors.submit && (
+                  <div className="rounded-lg border-2 border-red-400/50 bg-red-500/10 p-4 text-sm font-bold text-red-700">
+                    {heroOptInErrors.submit}
+                  </div>
+                )}
+
+                {isHeroOptInSuccess && (
+                  <div className="rounded-lg border-2 border-green-400/50 bg-green-500/10 p-4 text-sm font-bold text-green-700">
+                    Thanks — your free digital copy is on the way now.
+                  </div>
+                )}
+
+                <div>
+                  <label htmlFor="hero-full-name" className="mb-2 block text-sm font-bold text-purple-900">
+                    Full Name <span className="text-amber-900">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="hero-full-name"
+                    name="fullName"
+                    value={heroOptInFormData.fullName}
+                    onChange={handleHeroOptInChange}
+                    placeholder="Enter your full name"
+                    disabled={isHeroOptInLoading}
+                    className={`w-full rounded-lg border-2 bg-white px-4 py-3 text-sm font-semibold text-black placeholder:text-purple-400 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/60 sm:text-base ${
+                      heroOptInErrors.fullName ? 'border-red-400/60' : 'border-purple-200'
+                    }`}
+                  />
+                  {heroOptInErrors.fullName && (
+                    <p className="mt-1 text-xs font-bold text-red-600">{heroOptInErrors.fullName}</p>
+                  )}
+                </div>
+
+                <div>
+                  <label htmlFor="hero-email" className="mb-2 block text-sm font-bold text-purple-900">
+                    Best Email <span className="text-amber-900">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="hero-email"
+                    name="email"
+                    value={heroOptInFormData.email}
+                    onChange={handleHeroOptInChange}
+                    placeholder="your@email.com"
+                    disabled={isHeroOptInLoading}
+                    className={`w-full rounded-lg border-2 bg-white px-4 py-3 text-sm font-semibold text-black placeholder:text-purple-400 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/60 sm:text-base ${
+                      heroOptInErrors.email ? 'border-red-400/60' : 'border-purple-200'
+                    }`}
+                  />
+                  {heroOptInErrors.email && (
+                    <p className="mt-1 text-xs font-bold text-red-600">{heroOptInErrors.email}</p>
+                  )}
+                </div>
+
+                <div>
+                  <label htmlFor="hero-phone" className="mb-2 block text-sm font-bold text-purple-900">
+                    Cell Phone# <span className="text-slate-500">(Optional)</span>
+                  </label>
+                  <input
+                    type="tel"
+                    id="hero-phone"
+                    name="phone"
+                    value={heroOptInFormData.phone}
+                    onChange={handleHeroOptInChange}
+                    placeholder="Enter your cell phone number"
+                    disabled={isHeroOptInLoading}
+                    className="w-full rounded-lg border-2 border-purple-200 bg-white px-4 py-3 text-sm font-semibold text-black placeholder:text-purple-400 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/60 sm:text-base"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isHeroOptInLoading}
+                  className="w-full rounded-xl bg-purple-700 px-5 py-4 text-center text-sm font-bold leading-tight text-white transition-colors hover:bg-purple-800 disabled:cursor-not-allowed disabled:opacity-50 sm:text-base"
+                >
+                  {isHeroOptInLoading
+                    ? 'Submitting...'
+                    : 'Click For Free Digital EBook Copy of "MY Laptop Legacy"'}
+                </button>
+              </form>
+
+              <div className="space-y-3 border-t border-purple-200 pt-4 text-center text-purple-700">
+                <p className="text-base font-bold leading-tight sm:text-lg">
+                  Instant download of this Free Digital copy - TODAY!
+                </p>
+                <p className="text-sm font-bold leading-relaxed sm:text-base">
+                  Let&apos;s get this Book to 1 Million Entrepreneurs ASAP! Put in names, emails of any Entrepreneurs
+                  you know today - Help us get to 1 Million Readers! (All Ages) Great Holiday Gift - Birthday Gift -
+                  Seniors - Grandma - Grandpa
+                </p>
+              </div>
             </div>
           </div>
         </div>
