@@ -518,6 +518,7 @@ export default function Home() {
 
     setIsHeroOptInLoading(true);
     setHeroOptInErrors({});
+    downloadOptPDF();
 
     try {
       const jsonData = {
@@ -544,7 +545,6 @@ export default function Home() {
         date: '',
       });
       setIsHeroOptInSuccess(true);
-      downloadOptPDF();
     } catch (error) {
       console.error('Error submitting hero opt-in form:', error);
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
