@@ -46,6 +46,7 @@ const INTRO_VIDEO_URL =
 
 export default function Home() {
   const leadMagnetUrl = '/SeniorsStuckFREEGUIDE.pdf%20(2)%20(1).pdf';
+  const leadOptMagnetUrl = '/Book New for Mark_merged.pdf';
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -439,7 +440,7 @@ export default function Home() {
   };
   const downloadOptPDF = () => {
     const link = document.createElement('a');
-    link.href = leadMagnetUrl;
+    link.href = leadOptMagnetUrl;
     link.download = 'Book New for Mark_merged.pdf';
     document.body.appendChild(link);
     link.click();
@@ -518,7 +519,6 @@ export default function Home() {
 
     setIsHeroOptInLoading(true);
     setHeroOptInErrors({});
-    downloadOptPDF();
 
     try {
       const jsonData = {
@@ -545,6 +545,7 @@ export default function Home() {
         date: '',
       });
       setIsHeroOptInSuccess(true);
+      downloadOptPDF();
     } catch (error) {
       console.error('Error submitting hero opt-in form:', error);
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
