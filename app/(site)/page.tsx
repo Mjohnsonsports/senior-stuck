@@ -999,18 +999,17 @@ export default function Home() {
                       Get Legacy 2.0 DFY Website BluePrint
                     </a>
                   </div>
-                  <div className="w-full max-w-2xl px-1 text-center text-sm font-bold leading-snug text-black sm:text-base lg:text-lg">
-                    For Retired Teachers and Coaches – Seeking an Online Income DFY Business – Unlimited Leads and
-                    Complete Automation/System for Us –{' '}
-                    <a
-                      href="https://the-homefield-advantage.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-amber-900 underline underline-offset-4 hover:text-amber-950"
-                    >
-                      Click to Learn More
-                    </a>
-                  </div>
+                  <div className="flex w-full justify-center pt-2">
+  <a
+    href="https://the-homefield-advantage.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-block max-w-3xl rounded-lg bg-purple-700 px-6 py-4 text-center text-sm font-bold text-white transition-colors hover:bg-purple-800 sm:text-base lg:text-lg"
+  >
+    For Retired Teachers and Coaches – Seeking an Online Income DFY Business – Unlimited Leads and
+    Complete Automation/System for Us – Click to Learn More
+  </a>
+</div>
                 </div>
               </div>
             </div>
