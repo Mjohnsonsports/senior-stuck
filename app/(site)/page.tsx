@@ -982,34 +982,41 @@ export default function Home() {
                     Built By: www.SeniorsStuck CEO Mark Johnson
                   </p>
                   <div className="flex w-full max-w-xl flex-col justify-center gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:gap-4">
-                    <a
-                      href="http://www.60somethingthebook.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="rounded-lg bg-purple-700 px-4 py-3 text-center text-sm font-bold text-white wrap-break-word transition-colors hover:bg-purple-800 sm:flex-1 sm:px-6 sm:py-3.5 sm:text-lg"
-                    >
-                      Type 2 Diabetes – 60something website
-                    </a>
-                    <a
-                      href="https://www.60somethingteam.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="rounded-lg bg-purple-700 px-4 py-3 text-center text-sm font-bold text-white wrap-break-word transition-colors hover:bg-purple-800 sm:flex-1 sm:px-6 sm:py-3.5 sm:text-lg"
-                    >
-                      Get Legacy 2.0 DFY Website BluePrint
-                    </a>
+                    <div className="flex flex-col items-center gap-1 sm:flex-1">
+                      <a
+                        href="http://www.60somethingthebook.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full rounded-lg bg-purple-700 px-4 py-3 text-center text-sm font-bold text-white wrap-break-word transition-colors hover:bg-purple-800 sm:px-6 sm:py-3.5 sm:text-lg"
+                      >
+                        Type 2 Diabetes – 60something website
+                      </a>
+                      <p className="text-center text-xs text-gray-500">www.60somethingthebook.com</p>
+                    </div>
+                    <div className="flex flex-col items-center gap-1 sm:flex-1">
+                      <a
+                        href="https://www.60somethingteam.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full rounded-lg bg-purple-700 px-4 py-3 text-center text-sm font-bold text-white wrap-break-word transition-colors hover:bg-purple-800 sm:px-6 sm:py-3.5 sm:text-lg"
+                      >
+                        Get Legacy 2.0 DFY Website BluePrint
+                      </a>
+                      <p className="text-center text-xs text-gray-500">www.60somethingteam.com/ready</p>
+                    </div>
                   </div>
-                  <div className="flex w-full justify-center pt-2">
-  <a
-    href="https://the-homefield-advantage.com"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="inline-block max-w-3xl rounded-lg bg-purple-700 px-6 py-4 text-center text-sm font-bold text-white transition-colors hover:bg-purple-800 sm:text-base lg:text-lg"
-  >
-    For Retired Teachers and Coaches – Seeking an Online Income DFY Business – Unlimited Leads and
-    Complete Automation/System for Us – Click to Learn More
-  </a>
-</div>
+                  <div className="flex w-full flex-col items-center justify-center gap-1 pt-2">
+                    <a
+                      href="https://the-homefield-advantage.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block max-w-3xl rounded-lg bg-purple-700 px-6 py-4 text-center text-sm font-bold text-white transition-colors hover:bg-purple-800 sm:text-base lg:text-lg"
+                    >
+                      For Retired Teachers and Coaches – Seeking an Online Income DFY Business – Unlimited Leads and
+                      Complete Automation/System for Us – Click to Learn More
+                    </a>
+                    <p className="text-center text-xs text-gray-500">www.the-homefield-advantage.com</p>
+                  </div>
                 </div>
               </div>
             </div>
