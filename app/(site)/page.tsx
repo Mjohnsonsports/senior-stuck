@@ -991,7 +991,7 @@ export default function Home() {
                       >
                         Type 2 Diabetes – 60something website
                       </a>
-                      <p className="text-center text-xs text-gray-500">www.60somethingthebook.com</p>
+                      <a href="http://www.60somethingthebook.com" target="_blank" rel="noopener noreferrer" className="text-center text-xs text-gray-500 hover:underline">www.60somethingthebook.com</a>
                     </div>
                     <div className="flex flex-col items-center gap-1 sm:flex-1">
                       <a
@@ -1002,7 +1002,7 @@ export default function Home() {
                       >
                         Get Legacy 2.0 DFY Website BluePrint
                       </a>
-                      <p className="text-center text-xs text-gray-500">www.60somethingteam.com/ready</p>
+                      <a href="https://www.60somethingteam.com/ready" target="_blank" rel="noopener noreferrer" className="text-center text-xs text-gray-500 hover:underline">www.60somethingteam.com/ready</a>
                     </div>
                   </div>
                   <div className="flex w-full flex-col items-center justify-center gap-1 pt-2">
@@ -1015,7 +1015,7 @@ export default function Home() {
                       For Retired Teachers and Coaches – Seeking an Online Income DFY Business – Unlimited Leads and
                       Complete Automation/System for Us – Click to Learn More
                     </a>
-                    <p className="text-center text-xs text-gray-500">www.the-homefield-advantage.com</p>
+                    <a href="https://www.the-homefield-advantage.com" target="_blank" rel="noopener noreferrer" className="text-center text-xs text-gray-500 hover:underline">www.the-homefield-advantage.com</a>
                   </div>
                 </div>
               </div>
