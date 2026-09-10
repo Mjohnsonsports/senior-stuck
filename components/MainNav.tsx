@@ -229,99 +229,97 @@ export default function MainNav({ onFreeStarterKitClick }: MainNavProps) {
 
         {/* Main nav */}
         <header className="w-full border-b border-slate-200 bg-white">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
-          <button
-            type="button"
-            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-slate-200 text-slate-600 transition-colors hover:border-purple-200 hover:bg-purple-50 hover:text-purple-700 md:hidden"
-            onClick={() => setOpen(true)}
-            aria-expanded={open}
-            aria-controls="mobile-nav-drawer"
-            aria-label="Open menu"
-          >
-            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+          <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
+            <button
+              type="button"
+              className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-slate-200 text-slate-600 transition-colors hover:border-purple-200 hover:bg-purple-50 hover:text-purple-700 md:hidden"
+              onClick={() => setOpen(true)}
+              aria-expanded={open}
+              aria-controls="mobile-nav-drawer"
+              aria-label="Open menu"
+            >
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
 
-          <nav className="hidden min-w-0 flex-1 items-center justify-center md:flex" aria-label="Main">
-            <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 lg:gap-x-9">
-              <li>
-                <Link href="/" className={navLinkClass(isPathActive('/'))}>
-                  Home
-                </Link>
-              </li>
+            <nav className="hidden min-w-0 flex-1 items-center justify-center md:flex" aria-label="Main">
+              <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 lg:gap-x-9">
+                <li>
+                  <Link href="/" className={navLinkClass(isPathActive('/'))}>
+                    Home
+                  </Link>
+                </li>
 
-              <li className="relative" ref={resourcesRef}>
-                <button
-                  type="button"
-                  className={navLinkClass(isResourcesActive)}
-                  aria-expanded={resourcesOpen}
-                  aria-haspopup="true"
-                  onClick={() => setResourcesOpen((prev) => !prev)}
-                >
-                  Resources
-                  <ChevronDown className={resourcesOpen ? 'rotate-180' : ''} />
-                </button>
-
-                {resourcesOpen && (
-                  <ul
-                    role="menu"
-                    className="absolute top-full left-1/2 z-50 mt-3 min-w-[15rem] -translate-x-1/2 rounded-xl border border-slate-200 bg-white py-2 shadow-lg"
+                <li className="relative" ref={resourcesRef}>
+                  <button
+                    type="button"
+                    className={navLinkClass(isResourcesActive)}
+                    aria-expanded={resourcesOpen}
+                    aria-haspopup="true"
+                    onClick={() => setResourcesOpen((prev) => !prev)}
                   >
-                    {resourceLinks.map(({ href, label }) => (
-                      <li key={href} role="none">
-                        <Link
-                          href={href}
-                          role="menuitem"
-                          className={`block px-4 py-2.5 text-sm font-semibold transition-colors ${
-                            isPathActive(href)
-                              ? 'bg-purple-50 text-purple-700'
-                              : 'text-slate-600 hover:bg-slate-50 hover:text-purple-700'
-                          }`}
-                          onClick={() => setResourcesOpen(false)}
-                        >
-                          {label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
+                    Products
+                    <ChevronDown className={resourcesOpen ? 'rotate-180' : ''} />
+                  </button>
 
-              <li>
-                <a href={BLOG_URL} target="_blank" rel="noreferrer" className={navLinkClass(false)}>
-                  Award-Winning Blog
-                </a>
-              </li>
+                  {resourcesOpen && (
+                    <ul
+                      role="menu"
+                      className="absolute top-full left-1/2 z-50 mt-3 min-w-[15rem] -translate-x-1/2 rounded-xl border border-slate-200 bg-white py-2 shadow-lg"
+                    >
+                      {resourceLinks.map(({ href, label }) => (
+                        <li key={href} role="none">
+                          <Link
+                            href={href}
+                            role="menuitem"
+                            className={`block px-4 py-2.5 text-sm font-semibold transition-colors ${isPathActive(href)
+                                ? 'bg-purple-50 text-purple-700'
+                                : 'text-slate-600 hover:bg-slate-50 hover:text-purple-700'
+                              }`}
+                            onClick={() => setResourcesOpen(false)}
+                          >
+                            {label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
 
-              <li>
-                <Link href="/#about-heading" className={navLinkClass(isAnchorActive('#about-heading'))}>
-                  About Mark
-                </Link>
-              </li>
+                <li>
+                  <a href={BLOG_URL} target="_blank" rel="noreferrer" className={navLinkClass(false)}>
+                    Award-Winning Blog
+                  </a>
+                </li>
 
-              {/* FIXED: "Contact Mark" instead of "Contact", with booking URL */}
-              <li>
-                <a href={BOOKING_URL} target="_blank" rel="noreferrer" className={navLinkClass(false)}>
-                Book a Call with Mark
-                </a>
-              </li>
-            </ul>
-          </nav>
+                <li>
+                  <Link href="/#about-heading" className={navLinkClass(isAnchorActive('#about-heading'))}>
+                    About Mark
+                  </Link>
+                </li>
 
-          <div className="flex shrink-0 items-center md:ml-0 md:justify-end">
-            <FreeStarterKitButton />
+                {/* FIXED: "Contact Mark" instead of "Contact", with booking URL */}
+                <li>
+                  <a href={BOOKING_URL} target="_blank" rel="noreferrer" className={navLinkClass(false)}>
+                    Book a Call with Mark
+                  </a>
+                </li>
+              </ul>
+            </nav>
+
+            <div className="flex shrink-0 items-center md:ml-0 md:justify-end">
+              <FreeStarterKitButton />
+            </div>
           </div>
-        </div>
         </header>
       </div>
 
       <div className="md:hidden" aria-hidden={!open}>
         <button
           type="button"
-          className={`fixed inset-0 z-100 bg-black/40 transition-opacity duration-300 ${
-            open ? 'opacity-100' : 'pointer-events-none opacity-0'
-          }`}
+          className={`fixed inset-0 z-100 bg-black/40 transition-opacity duration-300 ${open ? 'opacity-100' : 'pointer-events-none opacity-0'
+            }`}
           aria-label="Close menu"
           tabIndex={open ? 0 : -1}
           onClick={closeMobile}
@@ -332,9 +330,8 @@ export default function MainNav({ onFreeStarterKitClick }: MainNavProps) {
           role="dialog"
           aria-modal="true"
           aria-label="Site menu"
-          className={`fixed top-0 right-0 z-110 flex h-full w-[min(100vw,20rem)] max-w-[85vw] flex-col border-l border-slate-200 bg-white shadow-[-8px_0_24px_rgba(0,0,0,0.12)] transition-transform duration-300 ease-out ${
-            open ? 'translate-x-0' : 'pointer-events-none translate-x-full'
-          }`}
+          className={`fixed top-0 right-0 z-110 flex h-full w-[min(100vw,20rem)] max-w-[85vw] flex-col border-l border-slate-200 bg-white shadow-[-8px_0_24px_rgba(0,0,0,0.12)] transition-transform duration-300 ease-out ${open ? 'translate-x-0' : 'pointer-events-none translate-x-full'
+            }`}
         >
           <div className="flex items-center justify-between gap-2 border-b border-slate-200 px-4 py-3">
             <span className="text-lg font-bold text-purple-700">Menu</span>
@@ -365,7 +362,7 @@ export default function MainNav({ onFreeStarterKitClick }: MainNavProps) {
                   aria-expanded={mobileResourcesOpen}
                   onClick={() => setMobileResourcesOpen((prev) => !prev)}
                 >
-                  <span>Resources</span>
+                  <span>Products</span>
                   <ChevronDown className={mobileResourcesOpen ? 'rotate-180' : ''} />
                 </button>
                 {mobileResourcesOpen && (

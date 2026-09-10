@@ -49,6 +49,26 @@ const PRODUCTS: Record<string, ProductConfig> = {
     priceLabel: '$17',
     priceId: process.env.NEXT_PUBLIC_STRIPE_PRODUCT_FREELANCER_DETECTOR_KIT || '',
   },
+  'bundle': {
+    title: '7 EBooks Bundle',
+    description: 'Get 7 essential guides and digital e-books for seniors starting online today.',
+    image: '/ZZZZ7.77_ (1) (2).png',
+    priceLabel: '$7.77 Today',
+    priceId:
+      process.env.NEXT_PRODUCT_7_EBOOKS_BUNDLE ||
+      process.env.NEXT_7_EBOOKS_BUNDLE ||
+      '',
+  },
+  '7-ebooks-bundle': {
+    title: '7 EBooks Bundle',
+    description: 'Get 7 essential guides and digital e-books for seniors starting online today.',
+    image: '/ZZZZ7.77_ (1) (2).png',
+    priceLabel: '$7.77 Today',
+    priceId:
+      process.env.NEXT_PUBLIC_PRODUCT_7_EBOOKS_BUNDLE ||
+      process.env.NEXT_PUBLIC_7_EBOOKS_BUNDLE ||
+      '',
+  },
 };
 
 function CheckoutContent() {
@@ -96,16 +116,16 @@ function CheckoutContent() {
           <MainNav />
         </header>
         <div className="flex items-center justify-center p-6">
-        <div className="max-w-xl w-full bg-white border border-gray-300 rounded-xl shadow-lg p-8 text-center">
-          <h1 className="text-2xl font-bold text-black mb-3">Product not found</h1>
-          <p className="text-gray-700 mb-6">Please choose a product from the pricing page.</p>
-          <Link
-            href="/pricing"
-            className="inline-block rounded-lg bg-purple-700 px-6 py-3 font-bold text-white transition-colors hover:bg-purple-800"
-          >
-            Back to pricing
-          </Link>
-        </div>
+          <div className="max-w-xl w-full bg-white border border-gray-300 rounded-xl shadow-lg p-8 text-center">
+            <h1 className="text-2xl font-bold text-black mb-3">Product not found</h1>
+            <p className="text-gray-700 mb-6">Please choose a product from the pricing page.</p>
+            <Link
+              href="/pricing"
+              className="inline-block rounded-lg bg-purple-700 px-6 py-3 font-bold text-white transition-colors hover:bg-purple-800"
+            >
+              Back to pricing
+            </Link>
+          </div>
         </div>
       </div>
     );
@@ -148,8 +168,8 @@ function CheckoutContent() {
               {!product.priceId
                 ? 'Price ID Not Configured'
                 : isLoading
-                ? 'Processing...'
-                : 'Buy now'}
+                  ? 'Processing...'
+                  : 'Buy now'}
             </button>
 
             <div className="text-center mt-4">

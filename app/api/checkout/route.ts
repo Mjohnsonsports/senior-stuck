@@ -36,8 +36,16 @@ export async function POST(request: NextRequest) {
 
     const origin = request.headers.get('origin') || 'https://www.seniorsstuck.com';
 
+    let mode: Stripe.Checkout.SessionCreateParams.Mode = 'payment';
+    try {
+      const price = await stripe.prices.retrieve(priceId);
+      mode = price.type === 'recurring' ? 'subscription' : 'payment';
+    } catch (err) {
+      console.warn('[checkout] Could not determine price type, fallback mode used');
+    }
+
     const session = await stripe.checkout.sessions.create({
-      mode: 'subscription',
+      mode,
       payment_method_types: ['card'],
       ...(email ? { customer_email: email } : {}),
       line_items: [

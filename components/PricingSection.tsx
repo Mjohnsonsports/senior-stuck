@@ -340,10 +340,10 @@ export default function PricingSection({
                   Purchase today and your order will be sent to your email later today - digital PDF.
                 </p>
                 <Link
-                  href="/bundle"
+                  href="/checkout?product=bundle"
                   className="inline-block w-full rounded-lg bg-purple-700 px-3 py-3 text-center text-sm font-bold leading-snug text-white wrap-break-word transition-colors hover:bg-purple-800 sm:px-4 sm:text-base"
                 >
-                  Click for details on 7 EBooks Bundle
+                  Click for 7 EBooks Bundle Checkout ($7.77)
                 </Link>
               </div>
             </div>

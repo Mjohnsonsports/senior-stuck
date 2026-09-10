@@ -13,7 +13,7 @@ const Bundle = () => {
        
         <img
           src="/ZZZZ7.77_ (1) (2).png"
-          alt="Freelancer Detector Kit"
+          alt="7 EBooks Bundle"
           className="w-full h-full object-cover rounded-lg border border-gray-300 shadow-md mb-4"
         />
         <h4 className="mb-2 wrap-break-word px-0.5 text-lg font-bold text-black sm:text-xl">7 EBooks Bundle – $7.77 Today</h4>
@@ -21,10 +21,10 @@ const Bundle = () => {
           Purchase today and your order will be sent to your email later today - digital PDF.
         </p>
         <Link
-          href="#"
+          href="/checkout?product=bundle"
           className="inline-block w-auto rounded-lg bg-purple-700 px-3 py-3 text-center text-sm font-bold leading-snug text-white wrap-break-word transition-colors hover:bg-purple-800 sm:px-4 sm:text-base"
         >
-          Click for details on 7 EBooks Bundle
+          Buy 7 EBooks Bundle - $7.77 Today
         </Link>
       </div>
     </div>
