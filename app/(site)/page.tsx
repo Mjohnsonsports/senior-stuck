@@ -1371,6 +1371,22 @@ export default function Home() {
         </div>
       )}
 
+      {/* Directory Solutions Section */}
+      <section className="bg-gray-100 px-4 py-8 sm:px-6 sm:py-12 lg:px-8 border-t border-gray-200" aria-label="Seniors Stuck Directory">
+        <div className="container mx-auto max-w-7xl">
+          <div className="overflow-hidden rounded-2xl border-2 border-purple-300/30 bg-white shadow-xl">
+            <Image
+              src="/ser.png"
+              alt="SeniorsStuck.com Directory - Choose A Solution From Our Seniors Stuck Directory"
+              width={1920}
+              height={1080}
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              className="h-auto w-full max-w-full object-contain"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="border-t border-black/20 py-8">
         <div className="container mx-auto px-6 text-center">
