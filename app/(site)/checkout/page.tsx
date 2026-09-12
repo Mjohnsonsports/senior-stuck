@@ -55,6 +55,9 @@ const PRODUCTS: Record<string, ProductConfig> = {
     image: '/ZZZZ7.77_ (1) (2).png',
     priceLabel: '$7.77 Today',
     priceId:
+      process.env.NEXT_PUBLIC_STRIPE_PRODUCT_7_EBOOKS_BUNDLE ||
+      process.env.NEXT_PUBLIC_PRODUCT_7_EBOOKS_BUNDLE ||
+      process.env.NEXT_PUBLIC_7_EBOOKS_BUNDLE ||
       process.env.NEXT_PRODUCT_7_EBOOKS_BUNDLE ||
       process.env.NEXT_7_EBOOKS_BUNDLE ||
       '',
@@ -65,8 +68,11 @@ const PRODUCTS: Record<string, ProductConfig> = {
     image: '/ZZZZ7.77_ (1) (2).png',
     priceLabel: '$7.77 Today',
     priceId:
+      process.env.NEXT_PUBLIC_STRIPE_PRODUCT_7_EBOOKS_BUNDLE ||
       process.env.NEXT_PUBLIC_PRODUCT_7_EBOOKS_BUNDLE ||
       process.env.NEXT_PUBLIC_7_EBOOKS_BUNDLE ||
+      process.env.NEXT_PRODUCT_7_EBOOKS_BUNDLE ||
+      process.env.NEXT_7_EBOOKS_BUNDLE ||
       '',
   },
 };
@@ -115,7 +121,7 @@ function CheckoutContent() {
         <header className="relative z-50">
           <MainNav />
         </header>
-        <div className="flex items-center justify-center p-6">
+        <div className="flex items-center justify-center p-6 pt-28 sm:pt-32">
           <div className="max-w-xl w-full bg-white border border-gray-300 rounded-xl shadow-lg p-8 text-center">
             <h1 className="text-2xl font-bold text-black mb-3">Product not found</h1>
             <p className="text-gray-700 mb-6">Please choose a product from the pricing page.</p>
@@ -132,11 +138,11 @@ function CheckoutContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 px-4 pb-10 sm:pb-14">
+    <div className="min-h-screen bg-gray-50 px-4 pt-28 sm:pt-32 pb-10 sm:pb-14">
       <header className="relative z-50">
         <MainNav />
       </header>
-      <div className="container mx-auto bg-white overflow-hidden">
+      <div className="container mx-auto bg-white overflow-hidden rounded-2xl border border-gray-200 shadow-lg">
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div className="bg-gray-100">
             <img
@@ -192,7 +198,7 @@ export default function CheckoutPage() {
           <header className="relative z-50">
             <MainNav />
           </header>
-          <div className="flex items-center justify-center p-6">
+          <div className="flex items-center justify-center p-6 pt-28 sm:pt-32">
             <div className="max-w-xl w-full bg-white border border-gray-300 rounded-xl shadow-lg p-8 text-center">
               <h1 className="text-2xl font-bold text-black mb-3">Loading checkout...</h1>
               <p className="text-gray-700">Preparing your product details.</p>
