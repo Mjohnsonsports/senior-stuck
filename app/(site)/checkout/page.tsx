@@ -55,11 +55,7 @@ const PRODUCTS: Record<string, ProductConfig> = {
     image: '/ZZZZ7.77_ (1) (2).png',
     priceLabel: '$7.77 Today',
     priceId:
-      process.env.NEXT_STRIPE_PRODUCT_7_EBOOKS_BUNDLE ||
-      process.env.NEXT_PUBLIC_PRODUCT_7_EBOOKS_BUNDLE ||
-      process.env.NEXT_PUBLIC_7_EBOOKS_BUNDLE ||
-      process.env.NEXT_PRODUCT_7_EBOOKS_BUNDLE ||
-      process.env.NEXT_7_EBOOKS_BUNDLE ||
+      process.env.NEXT_PUBLIC_STRIPE_PRODUCT_7_EBOOKS_BUNDLE ||
       '',
   },
   '7-ebooks-bundle': {
@@ -68,11 +64,8 @@ const PRODUCTS: Record<string, ProductConfig> = {
     image: '/ZZZZ7.77_ (1) (2).png',
     priceLabel: '$7.77 Today',
     priceId:
-      process.env.NEXT_STRIPE_PRODUCT_7_EBOOKS_BUNDLE ||
-      process.env.NEXT_PUBLIC_PRODUCT_7_EBOOKS_BUNDLE ||
-      process.env.NEXT_PUBLIC_7_EBOOKS_BUNDLE ||
-      process.env.NEXT_PRODUCT_7_EBOOKS_BUNDLE ||
-      process.env.NEXT_7_EBOOKS_BUNDLE ||
+      process.env.NEXT_PUBLIC_STRIPE_PRODUCT_7_EBOOKS_BUNDLE ||
+
       '',
   },
 };
