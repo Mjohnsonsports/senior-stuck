@@ -13,6 +13,15 @@ type ProductConfig = {
   priceId: string;
 };
 
+// Shared bundle product (used by both 'bundle' and '7-ebooks-bundle' slugs)
+const BUNDLE_PRODUCT: ProductConfig = {
+  title: '7 EBooks Bundle',
+  description: 'Get 7 essential guides and digital e-books for seniors starting online today.',
+  image: '/ZZZZ7.77_ (1) (2).png',
+  priceLabel: '$7.77 Today',
+  priceId: process.env.NEXT_PUBLIC_STRIPE_PRODUCT_7_EBOOKS_BUNDLE || '',
+};
+
 const PRODUCTS: Record<string, ProductConfig> = {
   'newsletter-monthly': {
     title: 'Monthly Plan - Newsletter',
@@ -49,25 +58,8 @@ const PRODUCTS: Record<string, ProductConfig> = {
     priceLabel: '$17',
     priceId: process.env.NEXT_PUBLIC_STRIPE_PRODUCT_FREELANCER_DETECTOR_KIT || '',
   },
-  'bundle': {
-    title: '7 EBooks Bundle',
-    description: 'Get 7 essential guides and digital e-books for seniors starting online today.',
-    image: '/ZZZZ7.77_ (1) (2).png',
-    priceLabel: '$7.77 Today',
-    priceId:
-      process.env.NEXT_PUBLIC_STRIPE_PRODUCT_7_EBOOKS_BUNDLE ||
-      '',
-  },
-  '7-ebooks-bundle': {
-    title: '7 EBooks Bundle',
-    description: 'Get 7 essential guides and digital e-books for seniors starting online today.',
-    image: '/ZZZZ7.77_ (1) (2).png',
-    priceLabel: '$7.77 Today',
-    priceId:
-      process.env.NEXT_PUBLIC_STRIPE_PRODUCT_7_EBOOKS_BUNDLE ||
-
-      '',
-  },
+  'bundle': BUNDLE_PRODUCT,
+  '7-ebooks-bundle': BUNDLE_PRODUCT,
 };
 
 function CheckoutContent() {
