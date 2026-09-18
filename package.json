@@ -11,6 +11,7 @@
     "test:webhook": "node scripts/send-test-webhook.mjs"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@portabletext/react": "^6.2.0",
     "@sanity/client": "^7.22.1",
     "@sanity/image-url": "^2.1.1",

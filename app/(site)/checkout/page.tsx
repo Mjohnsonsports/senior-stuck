@@ -13,7 +13,6 @@ type ProductConfig = {
   priceId: string;
 };
 
-// Shared bundle product (used by both 'bundle' and '7-ebooks-bundle' slugs)
 const BUNDLE_PRODUCT: ProductConfig = {
   title: '7 EBooks Bundle',
   description: 'Get 7 essential guides and digital e-books for seniors starting online today.',
@@ -58,7 +57,7 @@ const PRODUCTS: Record<string, ProductConfig> = {
     priceLabel: '$17',
     priceId: process.env.NEXT_PUBLIC_STRIPE_PRODUCT_FREELANCER_DETECTOR_KIT || '',
   },
-  'bundle': BUNDLE_PRODUCT,
+  bundle: BUNDLE_PRODUCT,
   '7-ebooks-bundle': BUNDLE_PRODUCT,
 };
 
@@ -71,7 +70,9 @@ function CheckoutContent() {
 
   const handleCheckout = async () => {
     if (!product?.priceId) {
-      alert('Price ID not configured. Please check your .env.local and restart the dev server.');
+      alert(
+        'Price ID not configured. Please check your .env.local and restart the dev server.'
+      );
       return;
     }
 
@@ -79,10 +80,11 @@ function CheckoutContent() {
     try {
       const response = await fetch('/api/checkout', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ priceId: product.priceId }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          priceId: product.priceId,
+          productKey,
+        }),
       });
 
       const data = await response.json();
@@ -142,12 +144,18 @@ function CheckoutContent() {
               Secure Checkout
             </span>
 
-            <h1 className="text-2xl sm:text-3xl font-bold text-black mb-3">{product.title}</h1>
-            <p className="text-gray-700 text-base sm:text-lg mb-6 leading-relaxed">{product.description}</p>
+            <h1 className="text-2xl sm:text-3xl font-bold text-black mb-3">
+              {product.title}
+            </h1>
+            <p className="text-gray-700 text-base sm:text-lg mb-6 leading-relaxed">
+              {product.description}
+            </p>
 
             <div className="border border-gray-200 rounded-xl p-4 mb-6 bg-gray-50">
               <p className="text-sm text-gray-600 mb-1">Today&apos;s Price</p>
-              <p className="text-2xl sm:text-3xl font-bold text-black">{product.priceLabel}</p>
+              <p className="text-2xl sm:text-3xl font-bold text-black">
+                {product.priceLabel}
+              </p>
             </div>
 
             <button
@@ -164,7 +172,10 @@ function CheckoutContent() {
             </button>
 
             <div className="text-center mt-4">
-              <Link href="/pricing" className="text-sm text-gray-700 hover:text-black underline">
+              <Link
+                href="/pricing"
+                className="text-sm text-gray-700 hover:text-black underline"
+              >
                 Back to pricing
               </Link>
             </div>
@@ -185,7 +196,9 @@ export default function CheckoutPage() {
           </header>
           <div className="flex items-center justify-center p-6 pt-28 sm:pt-32">
             <div className="max-w-xl w-full bg-white border border-gray-300 rounded-xl shadow-lg p-8 text-center">
-              <h1 className="text-2xl font-bold text-black mb-3">Loading checkout...</h1>
+              <h1 className="text-2xl font-bold text-black mb-3">
+                Loading checkout...
+              </h1>
               <p className="text-gray-700">Preparing your product details.</p>
             </div>
           </div>
